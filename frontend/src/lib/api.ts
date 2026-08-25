@@ -1,12 +1,54 @@
 const API_BASE = "/api/dashboard";
 
+type UnauthorizedHandler = () => void;
+
+const unauthorizedHandlers = new Set<UnauthorizedHandler>();
+
+export function subscribeDashboardUnauthorized(handler: UnauthorizedHandler): () => void {
+  unauthorizedHandlers.add(handler);
+  return () => {
+    unauthorizedHandlers.delete(handler);
+  };
+}
+
+function notifyDashboardUnauthorized(): void {
+  for (const handler of unauthorizedHandlers) {
+    handler();
+  }
+}
+
+export interface Group {
+  id: string;
+  name: string;
+  description: string;
+  is_default: boolean;
+  user_selectable: boolean;
+  sort_order: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CreateGroupInput {
+  name: string;
+  description?: string;
+  user_selectable?: boolean;
+  sort_order?: number;
+}
+
+export interface UpdateGroupInput {
+  name?: string;
+  description?: string;
+  user_selectable?: boolean;
+  sort_order?: number;
+}
+
 export interface UserBillingPlan {
   id: string;
   name: string;
   grant_amount_nano_usd: string;
   grant_amount_usd: string;
   schedule: string;
-  allowed_groups: string[];
+  group_ids: string[];
   enabled: boolean;
 }
 
@@ -21,7 +63,7 @@ export interface User {
   balance_usd: string;
   balance_unlimited: boolean;
   email?: string | null;
-  allowed_groups: string[];
+  group_id: string;
   billing_plan_id?: string | null;
   next_grant_at?: string | null;
   billing_plan?: UserBillingPlan | null;
@@ -36,7 +78,7 @@ export interface BillingPlan {
   grant_amount_nano_usd: string;
   grant_amount_usd: string;
   schedule: string;
-  allowed_groups: string[];
+  group_ids: string[];
   enabled: boolean;
   created_at: string;
   updated_at: string;
@@ -47,7 +89,7 @@ export interface BillingPlanInput {
   grant_amount_nano_usd?: string;
   grant_amount_usd?: string;
   schedule: string;
-  allowed_groups?: string[];
+  group_ids?: string[];
   enabled?: boolean;
 }
 
@@ -72,6 +114,8 @@ export interface TransformRegistryItem {
   supported_phases: Phase[];
   supported_scopes: TransformScope[];
   config_schema: Record<string, unknown>;
+  name: Record<string, string>;
+  description: Record<string, string>;
 }
 
 export interface ModelRedirectRule {
@@ -96,7 +140,8 @@ export interface ApiKey {
   model_limits_enabled: boolean;
   model_limits: string[];
   ip_whitelist: string[];
-  allowed_groups: string[];
+  use_user_group: boolean;
+  group_ids: string[];
   max_multiplier?: string;
   transforms: TransformRuleConfig[];
   model_redirects: ModelRedirectRule[];
@@ -114,7 +159,8 @@ export interface CreateApiKeyInput {
   model_limits_enabled?: boolean;
   model_limits?: string[];
   ip_whitelist?: string[];
-  allowed_groups?: string[];
+  use_user_group?: boolean;
+  group_ids?: string[];
   max_multiplier?: string;
   transforms?: TransformRuleConfig[];
   model_redirects?: ModelRedirectRule[];
@@ -130,7 +176,8 @@ export interface UpdateApiKeyInput {
   model_limits_enabled?: boolean;
   model_limits?: string[];
   ip_whitelist?: string[];
-  allowed_groups?: string[];
+  use_user_group?: boolean;
+  group_ids?: string[];
   max_multiplier?: string;
   transforms?: TransformRuleConfig[];
   expires_at?: string;
@@ -195,7 +242,7 @@ export interface DashboardStats {
 }
 
 export interface DashboardGroupsResponse {
-  groups: string[];
+  groups: Group[];
 }
 
 export interface ConfigOverview {
@@ -280,7 +327,7 @@ export interface Provider {
   request_timeout_ms_override?: number | null;
   extra_fields_whitelist?: string[] | null;
   strip_cross_protocol_nested_extra?: boolean | null;
-  groups: string[];
+  group_ids: string[];
   enabled: boolean;
   priority: number;
   created_at: string;
@@ -332,7 +379,7 @@ export interface CreateProviderInput {
   request_timeout_ms_override?: number | null;
   extra_fields_whitelist?: string[] | null;
   strip_cross_protocol_nested_extra?: boolean | null;
-  groups?: string[];
+  group_ids?: string[];
   enabled?: boolean;
   priority?: number;
 }
@@ -354,7 +401,7 @@ export interface UpdateProviderInput {
   request_timeout_ms_override?: number | null;
   extra_fields_whitelist?: string[] | null;
   strip_cross_protocol_nested_extra?: boolean | null;
-  groups?: string[];
+  group_ids?: string[];
   enabled?: boolean;
   priority?: number;
 }
@@ -545,6 +592,62 @@ export interface RequestLog {
   billing: RequestLogBilling;
   usage?: Record<string, unknown>;
   error: RequestLogError;
+  has_capture?: boolean;
+}
+
+export interface CaptureTransformChainEntry {
+  scope: "provider" | "global" | "api_key";
+  transform: string;
+  phase: "request" | "response";
+}
+
+export interface CaptureFrameTruncation {
+  truncated?: boolean;
+  omitted_frames?: number;
+  omitted_bytes?: number;
+  retained_frames?: number;
+  retained_bytes?: number;
+}
+
+export interface CaptureAttempt {
+  attempt_number: number;
+  provider_id: string;
+  channel_id?: string | null;
+  provider_type: string;
+  logical_model: string;
+  upstream_model: string;
+  upstream_path: string;
+  raw_input: unknown;
+  transformed_urp_request: unknown;
+  upstream_request: unknown;
+  downstream_response?: unknown;
+  downstream_sse_frames?: string[] | null;
+  downstream_sse_frames_truncation?: CaptureFrameTruncation;
+  transform_chain?: CaptureTransformChainEntry[] | null;
+  /** Number of transform entries redacted for non-admin viewers (RCV-A10). */
+  hidden_transforms?: number;
+  error?: unknown;
+}
+
+export interface CaptureDump {
+  version: number;
+  request_id?: string | null;
+  created_at: string;
+  api_key_id: string;
+  user_id: string;
+  downstream_protocol: string;
+  is_stream: boolean;
+  attempts: CaptureAttempt[];
+  capture_truncation?: Record<string, unknown>;
+}
+
+export interface RequestCaptureDetail {
+  request_id: string;
+  file_name: string;
+  created_at: string;
+  size_bytes: number;
+  owner: { id: string; username?: string | null };
+  dump: CaptureDump;
 }
 
 export interface AdminOverviewNode {
@@ -696,6 +799,9 @@ class ApiClient {
     const data = await response.json();
 
     if (!response.ok) {
+      if (response.status === 401 && data.error?.code === "unauthorized") {
+        notifyDashboardUnauthorized();
+      }
       throw new Error(data.error?.message || data.error?.code || "Request failed");
     }
 
@@ -748,11 +854,11 @@ class ApiClient {
     username: string,
     password: string,
     role?: string,
-    allowed_groups?: string[]
+    group_id?: string
   ): Promise<User> {
     return this.request("/users", {
       method: "POST",
-      body: JSON.stringify({ username, password, role, allowed_groups }),
+      body: JSON.stringify({ username, password, role, group_id }),
     });
   }
 
@@ -767,7 +873,7 @@ class ApiClient {
       balance_usd?: string;
       balance_unlimited?: boolean;
       email?: string | null;
-      allowed_groups?: string[];
+      group_id?: string;
       billing_plan_id?: string | null;
     }
   ): Promise<User> {
@@ -888,6 +994,27 @@ class ApiClient {
 
   async listDashboardGroups(): Promise<DashboardGroupsResponse> {
     return this.request("/groups");
+  }
+
+  // Groups registry (admin CRUD)
+  async createGroup(input: CreateGroupInput): Promise<Group> {
+    return this.request("/groups", {
+      method: "POST",
+      body: JSON.stringify(input),
+    });
+  }
+
+  async updateGroup(id: string, input: UpdateGroupInput): Promise<Group> {
+    return this.request(`/groups/${encodeURIComponent(id)}`, {
+      method: "PUT",
+      body: JSON.stringify(input),
+    });
+  }
+
+  async deleteGroup(id: string): Promise<{ success: boolean }> {
+    return this.request(`/groups/${encodeURIComponent(id)}`, {
+      method: "DELETE",
+    });
   }
 
   // Providers
@@ -1026,6 +1153,15 @@ class ApiClient {
     if (filters?.time_from) params.set("time_from", filters.time_from);
     if (filters?.time_to) params.set("time_to", filters.time_to);
     return this.request(`/request-logs?${params.toString()}`);
+  }
+
+  async getRequestCapture(requestId: string, userId?: string): Promise<RequestCaptureDetail> {
+    const params = new URLSearchParams();
+    if (userId) params.set("user_id", userId);
+    const query = params.toString();
+    return this.request(
+      `/request-captures/${encodeURIComponent(requestId)}${query ? `?${query}` : ""}`
+    );
   }
 
   async getDashboardAnalytics(buckets = 8, rangeHours = 24): Promise<DashboardAnalytics> {

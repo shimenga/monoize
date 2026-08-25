@@ -266,7 +266,7 @@ pub(super) async fn execute_nonstream_typed_with_validator(
             // that the cross-family strip can run BEFORE provider, global,
             // and API-key transforms. This guarantees that transforms which
             // inject upstream-specific part-level metadata (e.g.
-            // `auto_cache_system`, `auto_cache_tool_use`) survive into the
+            // `cache_anthropic_system`, `cache_anthropic_tool_use`) survive into the
             // encoded upstream request even when the downstream and upstream
             // protocol families differ.
             let mut req_attempt = original_req.clone();
@@ -373,6 +373,12 @@ pub(super) async fn execute_nonstream_typed_with_validator(
                 .await);
             }
             strip_monoize_context(&mut req_attempt);
+            let capture_transform_chain = crate::request_capture::build_transform_chain(
+                &attempt.provider_transforms,
+                &global_transforms,
+                &auth.transforms,
+                &transform_match_model,
+            );
 
             let upstream_body =
                 match encode_request_for_provider(&mut req_attempt, &attempt, downstream) {
@@ -588,6 +594,7 @@ pub(super) async fn execute_nonstream_typed_with_validator(
                                 upstream_body.clone(),
                                 value.clone(),
                                 None,
+                                capture_transform_chain.clone(),
                                 None,
                             ))
                             .await;
@@ -720,7 +727,7 @@ pub(super) async fn execute_nonstream_typed_with_validator(
                     // the response. Per spec/urp-transform-system.spec.md
                     // PIPE-1 step 12 and PIPE-1d, transforms must only see
                     // encrypted reasoning in `mz2.` envelope form so that
-                    // bulk-mutation transforms (e.g. strip_encrypted_reasoning)
+                    // bulk-mutation transforms (e.g. reasoning_strip_encrypted)
                     // can reason about that single canonical surface.
                     if auth.reasoning_envelope_enabled {
                         urp::wrap_reasoning_envelopes_in_response(
@@ -899,6 +906,7 @@ pub(super) async fn execute_nonstream_typed_with_validator(
                                 upstream_body.clone(),
                                 None,
                                 None,
+                                capture_transform_chain.clone(),
                                 Some(json!({
                                     "message": err.message,
                                     "code": err.code,
