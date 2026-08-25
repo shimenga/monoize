@@ -19,7 +19,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import {
   AlertDialog,
@@ -727,14 +726,12 @@ export function ApiKeysPage() {
             </Button>
           )}
           <Dialog open={createOpen} onOpenChange={setCreateOpen}>
-            <DialogTrigger asChild>
-              <AnimatedButton>
-                <Button>
-                  <Plus className="mr-2 h-4 w-4" />
-                  {t("apiKeys.createKey")}
-                </Button>
-              </AnimatedButton>
-            </DialogTrigger>
+            <AnimatedButton>
+              <Button onClick={() => setCreateOpen(true)}>
+                <Plus className="mr-2 h-4 w-4" />
+                {t("apiKeys.createKey")}
+              </Button>
+            </AnimatedButton>
             <DialogContent className="max-h-[calc(100dvh-2rem)] overflow-hidden p-0 sm:max-h-[calc(100dvh-3rem)] sm:max-w-4xl">
               <div className="flex min-h-0 flex-col p-6">
               <DialogHeader className="shrink-0">

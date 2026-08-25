@@ -368,6 +368,8 @@ AK11. In the `/dashboard/tokens` list table, the API key name and allowed-group 
 - The allowed-group badge collection MUST remain adjacent to the API key name and MUST NOT move below the name.
 - If the inline row exceeds the available viewport width, the table container MUST handle overflow through horizontal scrolling.
 
+AK12. Activating the create-key button in the `/dashboard/tokens` page header MUST set the controlled create dialog to open. The interactive button element MUST receive the activation handler directly; a non-interactive animation wrapper MUST NOT consume the dialog trigger handler.
+
 ## 5. Dashboard Home Page
 
 DH1. `/dashboard` MUST render a dark themed overview shell containing exactly 3 visual rows:
