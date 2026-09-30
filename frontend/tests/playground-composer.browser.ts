@@ -1,15 +1,16 @@
 import assert from "node:assert/strict";
+import { fileURLToPath } from "node:url";
 import { chromium, expect } from "@playwright/test";
 
 const build = await Bun.build({
-  entrypoints: [new URL("./fixtures/playground-composer.tsx", import.meta.url).pathname],
+  entrypoints: [fileURLToPath(new URL("./fixtures/playground-composer.tsx", import.meta.url))],
   target: "browser",
   define: { "process.env.NODE_ENV": '"production"' },
 });
 if (!build.success) throw new AggregateError(build.logs, "Browser fixture build failed");
 const bundle = await build.outputs[0].text();
 const style = Bun.spawn([
-  "bun", "x", "--no-install", "tailwindcss", "-i", "src/index.css", "--minify",
+  process.execPath, "x", "--no-install", "tailwindcss", "-i", "src/index.css", "--minify",
 ], { stdout: "pipe", stderr: "pipe" });
 const css = (await new Response(style.stdout).text()).replace(/@import[^;]+;/g, "");
 if (await style.exited) throw new Error(await new Response(style.stderr).text());

@@ -215,6 +215,10 @@ FR-13. Loading settings MUST render the existing settings-page skeleton until
 the `global_model_redirects` value is available. A save MUST use the existing
 optimistic settings mutation and error-toast behavior.
 
+FR-14. The section label, empty-list message, and regular-expression help text
+MUST have translations in `en`, `zh`, `zh-TW`, and `ja`. The selected locale
+MUST NOT fall back to English or display a translation-key identifier for these strings.
+
 ## Error Cases
 
 | Condition                    | HTTP | Code                    | Message                                      |

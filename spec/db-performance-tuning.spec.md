@@ -388,6 +388,11 @@ create/update/delete/reorder) and every write to `monoize_groups` (group
 create/update/reorder/delete) MUST increment the registry generation after the write
 commits. The generation counter is process-wide.
 
+DPT-RR3a. A successful nonempty Provider reorder MUST publish its generation
+increment before returning. The next registry read MUST observe the committed
+order without waiting for TTL expiry. A failed reorder MUST not publish a new
+generation.
+
 DPT-RR4. Snapshot rebuild MUST single-flight per DPT-SW4. While a rebuild is in
 flight, readers MUST continue to be served by the previous snapshot. A rebuild that
 fails MUST leave the previous snapshot installed and MUST propagate the error to the
@@ -420,6 +425,11 @@ parameters. The TTL MUST be 10000 ms by default, selected by
 `MONOIZE_DASHBOARD_AGG_CACHE_TTL_MS`; `0` disables caching. Capacity MUST be 256
 entries by default, selected by `MONOIZE_DASHBOARD_AGG_CACHE_CAPACITY`; insertion at
 capacity MUST evict before publishing.
+
+DPT-DA2a. Cloning an application state MUST share the dashboard cache entries.
+Concurrent inserts MUST not exceed capacity. Replacing an existing key MUST not
+evict another key. Eviction MUST release any read or iteration guard before
+acquiring an exclusive guard for the same entry.
 
 DPT-DA3. Only successful query results MUST be cached. Errors propagate uncached.
 

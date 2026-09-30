@@ -2469,7 +2469,9 @@ impl MonoizeRoutingStore {
         ))
         .await
         .map_err(|e| e.to_string())?;
-        txn.commit().await.map_err(|e| e.to_string())
+        txn.commit().await.map_err(|e| e.to_string())?;
+        bump_registry_generation();
+        Ok(())
     }
 
     async fn replace_channel_on(
@@ -3725,6 +3727,8 @@ mod tests {
             ))
             .await
             .expect("provider boolean becomes malformed");
+        // Direct fixture writes bypass the store's generation publication.
+        bump_registry_generation();
         assert!(store.get_provider(&provider.id).await.is_err());
     }
 
@@ -3899,6 +3903,7 @@ mod tests {
             ))
             .await
             .expect("corrupt whitelist writes");
+        bump_registry_generation();
         assert!(
             store
                 .get_provider(&created.id)

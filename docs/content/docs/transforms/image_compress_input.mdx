@@ -3,6 +3,10 @@ title: "Image: compress request images"
 description: Re-encode inline user images and tool images before upstream encoding.
 ---
 
+JPEG XL output requires a build with the `jpegxl` feature, which is enabled by default.
+Without that feature, JPEG XL encoding returns an error. Other output formats remain available.
+Set `MONOIZE_IMAGE_TRANSFORM_JXL_THREADS` to a positive integer to control native workers per JPEG XL encode. The default is `4`.
+
 ## What it does
 
 This transform re-encodes inline user images and typed images in tool results. It also processes image data URLs and image blocks in JSON function-tool arguments. It can resize eligible images to `max_edge_px`. It leaves custom-tool input and unrelated Base64 unchanged.

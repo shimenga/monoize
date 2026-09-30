@@ -3,6 +3,8 @@ title: Provider 与 Channel
 description: 用 Group 内有序的 Provider 和内嵌 Channel 定义上游路由。
 ---
 
+Provider 排序保存后立即生效，无需等待缓存过期。现有 Channel 绑定和亲和性规则仍然有效。
+
 ## 概念
 
 - **Provider（服务提供者）** 属于一个 Group。它定义路由顺序、默认价格、健康策略和有序的变换链。

@@ -5,12 +5,13 @@
 //! few seconds; this cache bounds them to one execution per TTL window per
 //! parameter set.
 
-use dashmap::DashMap;
+use std::collections::HashMap;
+use std::sync::{Arc, Mutex};
 use std::time::{Duration, Instant};
 
 #[derive(Clone)]
 pub struct DashboardAggCache {
-    entries: DashMap<String, (serde_json::Value, Instant)>,
+    entries: Arc<Mutex<HashMap<String, (serde_json::Value, Instant)>>>,
     /// `None` disables caching: reads always miss (DPT-DA2).
     ttl: Option<Duration>,
     capacity: usize,
@@ -42,7 +43,7 @@ impl DashboardAggCache {
             Err(_) => 256,
         };
         Self {
-            entries: DashMap::new(),
+            entries: Arc::new(Mutex::new(HashMap::new())),
             ttl,
             capacity,
         }
@@ -52,10 +53,13 @@ impl DashboardAggCache {
     /// cache is disabled, the key is absent, or the entry expired (DPT-DA3).
     pub fn get(&self, key: &str) -> Option<serde_json::Value> {
         let ttl = self.ttl?;
-        let entry = self.entries.get(key)?;
+        let mut entries = self
+            .entries
+            .lock()
+            .unwrap_or_else(|error| error.into_inner());
+        let entry = entries.get(key)?;
         if entry.1.elapsed() > ttl {
-            drop(entry);
-            self.entries.remove_if(key, |_, (_, at)| at.elapsed() > ttl);
+            entries.remove(key);
             return None;
         }
         Some(entry.0.clone())
@@ -65,13 +69,16 @@ impl DashboardAggCache {
         if self.ttl.is_none() {
             return;
         }
-        if self.entries.len() >= self.capacity {
-            if let Some(victim) = self.entries.iter().next().map(|e| e.key().clone()) {
-                self.entries.remove(&victim);
+        let mut entries = self
+            .entries
+            .lock()
+            .unwrap_or_else(|error| error.into_inner());
+        if !entries.contains_key(key) && entries.len() >= self.capacity {
+            if let Some(victim) = entries.keys().next().cloned() {
+                entries.remove(&victim);
             }
         }
-        self.entries
-            .insert(key.to_string(), (value, Instant::now()));
+        entries.insert(key.to_string(), (value, Instant::now()));
     }
 }
 
@@ -81,7 +88,7 @@ mod tests {
 
     fn cache_with_ttl(ttl: Option<Duration>) -> DashboardAggCache {
         DashboardAggCache {
-            entries: DashMap::new(),
+            entries: Arc::new(Mutex::new(HashMap::new())),
             ttl,
             capacity: 4,
         }
@@ -108,12 +115,69 @@ mod tests {
     }
 
     #[test]
-    fn capacity_evicts_oldest_insertion_batch() {
+    fn capacity_evicts_before_inserting_a_new_key() {
         let cache = cache_with_ttl(Some(Duration::from_secs(10)));
         for index in 0..4 {
             cache.put(&format!("k{index}"), serde_json::json!(index));
         }
         cache.put("k4", serde_json::json!(4));
-        assert_eq!(cache.entries.len(), 4);
+        assert_eq!(cache.entries.lock().unwrap().len(), 4);
+        assert_eq!(cache.get("k4"), Some(serde_json::json!(4)));
+    }
+
+    #[test]
+    fn application_state_clones_share_entries() {
+        let cache = cache_with_ttl(Some(Duration::from_secs(10)));
+        let cloned = cache.clone();
+        cache.put("key", serde_json::json!(1));
+        assert_eq!(cloned.get("key"), Some(serde_json::json!(1)));
+        cloned.put("key", serde_json::json!(2));
+        assert_eq!(cache.get("key"), Some(serde_json::json!(2)));
+    }
+
+    #[test]
+    fn replacing_a_key_at_capacity_keeps_other_keys() {
+        let cache = cache_with_ttl(Some(Duration::from_secs(10)));
+        for index in 0..4 {
+            cache.put(&format!("k{index}"), serde_json::json!(index));
+        }
+        cache.put("k0", serde_json::json!(99));
+        for index in 1..4 {
+            assert_eq!(
+                cache.get(&format!("k{index}")),
+                Some(serde_json::json!(index))
+            );
+        }
+        assert_eq!(cache.get("k0"), Some(serde_json::json!(99)));
+    }
+
+    #[test]
+    fn concurrent_inserts_keep_the_capacity_bound() {
+        let cache = cache_with_ttl(Some(Duration::from_secs(10)));
+        std::thread::scope(|scope| {
+            for worker in 0..8 {
+                let cache = &cache;
+                scope.spawn(move || {
+                    for index in 0..100 {
+                        cache.put(&format!("{worker}-{index}"), serde_json::json!(index));
+                        assert!(cache.entries.lock().unwrap().len() <= cache.capacity);
+                    }
+                });
+            }
+        });
+    }
+
+    #[test]
+    fn expired_entries_are_removed_without_returning_a_payload() {
+        let cache = cache_with_ttl(Some(Duration::from_secs(1)));
+        cache.entries.lock().unwrap().insert(
+            "old".to_owned(),
+            (
+                serde_json::json!(1),
+                Instant::now() - Duration::from_secs(2),
+            ),
+        );
+        assert_eq!(cache.get("old"), None);
+        assert!(cache.entries.lock().unwrap().is_empty());
     }
 }

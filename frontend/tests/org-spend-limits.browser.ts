@@ -1,8 +1,9 @@
 import assert from "node:assert/strict";
+import { fileURLToPath } from "node:url";
 import { chromium, expect, type Page } from "@playwright/test";
 
 const build = await Bun.build({
-  entrypoints: [new URL("./fixtures/org-spend-limits.tsx", import.meta.url).pathname],
+  entrypoints: [fileURLToPath(new URL("./fixtures/org-spend-limits.tsx", import.meta.url))],
   target: "browser",
   define: { "process.env.NODE_ENV": '"production"' },
 });
@@ -48,7 +49,8 @@ async function openPage() {
     throw new Error(`Unexpected request: ${request.method()} ${path}`);
   });
   await page.goto(server.url.href);
-  await expect(page.locator("#space-spend-total_nano_usd")).toHaveValue("1");
+  await expect(page.getByRole("tab", { name: "CNY", exact: true }).first()).toHaveAttribute("aria-selected", "true");
+  await expect(page.locator("#space-spend-total_nano_usd")).toHaveValue("7");
   return { page, mutations };
 }
 
@@ -99,6 +101,8 @@ try {
   await check("a currency switch in a different row preserves all edited limits", async () => {
     const { page, mutations } = await openPage();
     try {
+      await page.getByRole("tab", { name: "USD", exact: true }).first().click();
+      await expect(page.locator("#space-spend-total_nano_usd")).toHaveValue("1");
       await page.locator("#space-spend-total_nano_usd").fill("2");
       await page.locator("#member-member-a-spend-total_nano_usd").fill("3");
       await page.locator("#key-key-a-spend-total_nano_usd").fill("4");

@@ -3,6 +3,10 @@ title: "图像：压缩响应图片"
 description: 重新编码响应及流中的 assistant 图片和工具图片。
 ---
 
+JPEG XL 输出需要启用 `jpegxl` 编译特性。默认构建已启用此特性。
+未启用时，JPEG XL 编码会返回错误，其他输出格式仍可使用。
+将 `MONOIZE_IMAGE_TRANSFORM_JXL_THREADS` 设为正整数，可控制每次 JPEG XL 编码使用的原生工作线程数。默认值为 `4`。
+
 对于 JPEG、PNG 和 WebP，变换根据图片字节检测实际格式。保留有效原始字节时，变换会纠正不匹配的 MIME 类型。无效图片保持不变。
 
 ## 行为

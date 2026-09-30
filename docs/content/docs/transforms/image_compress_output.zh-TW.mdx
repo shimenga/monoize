@@ -3,6 +3,10 @@ title: "圖像：壓縮回應圖片"
 description: 重新編碼回應及串流中的 assistant 圖片和工具圖片。
 ---
 
+JPEG XL 輸出需要啟用 `jpegxl` 編譯功能。預設建置已啟用此功能。
+未啟用時，JPEG XL 編碼會回傳錯誤，其他輸出格式仍可使用。
+將 `MONOIZE_IMAGE_TRANSFORM_JXL_THREADS` 設為正整數，可控制每次 JPEG XL 編碼使用的原生工作執行緒數。預設值為 `4`。
+
 對於 JPEG、PNG 和 WebP，轉換會根據圖片位元組偵測實際格式。保留有效原始位元組時，轉換會修正不符的 MIME 類型。無效圖片維持不變。
 
 ## 行為

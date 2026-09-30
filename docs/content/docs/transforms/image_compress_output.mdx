@@ -3,6 +3,10 @@ title: "Image: compress response images"
 description: Re-encode assistant images and tool images in responses and streams.
 ---
 
+JPEG XL output requires a build with the `jpegxl` feature, which is enabled by default.
+Without that feature, JPEG XL encoding returns an error. Other output formats remain available.
+Set `MONOIZE_IMAGE_TRANSFORM_JXL_THREADS` to a positive integer to control native workers per JPEG XL encode. The default is `4`.
+
 For JPEG, PNG, and WebP, the transform detects the format from the image bytes. It corrects a mismatched MIME type when it retains valid bytes. Invalid images remain unchanged.
 
 ## What it does

@@ -630,6 +630,14 @@ CUMI-8. When `output_format = original`, the transform MUST use the detected for
 
 Both JPEG XL modes MUST emit media type `image/jxl`. Both WebP modes MUST emit media type `image/webp`.
 
+CUMI-8b. The default Cargo feature set MUST include `jpegxl`. A build without
+that feature MUST compile without linking libjxl. An attempted JPEG XL encode
+in that build MUST return `TransformError::Apply` with message
+`jpeg xl support is disabled in this build`. Other image formats retain their
+specified behavior. With the feature enabled, each encoder MUST use
+`MONOIZE_IMAGE_TRANSFORM_JXL_THREADS`, parsed according to RRB-C1 with default 4,
+as its native worker count.
+
 CUMI-8a. If the decoded source has an alpha channel and the selected output format is `jpg`, the transform MUST leave the image source unchanged. This rule applies even when all alpha samples are opaque. It takes precedence over `max_edge_px` and `skip_if_smaller`. The transform MUST preserve the original encoded bytes, media type, dimensions, and source representation. Formats that support alpha MUST continue to use CUMI-8. Cached results created before this rule MUST NOT replace the source.
 
 CUMI-9. The cache key material MUST be the ordered byte sequence:

@@ -3,6 +3,10 @@ title: "图像：压缩请求图片"
 description: 在上游编码前，重新编码 user 图片和工具图片。
 ---
 
+JPEG XL 输出需要启用 `jpegxl` 编译特性。默认构建已启用此特性。
+未启用时，JPEG XL 编码会返回错误，其他输出格式仍可使用。
+将 `MONOIZE_IMAGE_TRANSFORM_JXL_THREADS` 设为正整数，可控制每次 JPEG XL 编码使用的原生工作线程数。默认值为 `4`。
+
 ## 行为
 
 此变换重新编码 user 消息中的内联图片和工具结果中的图片。它也处理函数工具参数 JSON 中的图片 data URL 和图片块。可用 `max_edge_px` 缩放这些图片。自定义工具的自由文本及其他 Base64 保持不变。

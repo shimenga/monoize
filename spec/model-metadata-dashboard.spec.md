@@ -360,6 +360,9 @@ UI16. Billing resolves a normalized pricing key for `upstream_model` first. Pric
 
 ## 5. Invariants
 
+UI-I18N-1. The cache-write price field label MUST have translations in `en`,
+`zh`, `zh-TW`, and `ja`. Each label MUST state the per-million-token unit.
+
 INV1. `source = 'manual'` whenever created or updated via PUT endpoint.
 
 INV2. Sync MUST NOT modify records where `source = 'manual'`.

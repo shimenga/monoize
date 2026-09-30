@@ -3,6 +3,10 @@ title: "圖像：壓縮請求圖片"
 description: 在上游編碼前，重新編碼 user 圖片和工具圖片。
 ---
 
+JPEG XL 輸出需要啟用 `jpegxl` 編譯功能。預設建置已啟用此功能。
+未啟用時，JPEG XL 編碼會回傳錯誤，其他輸出格式仍可使用。
+將 `MONOIZE_IMAGE_TRANSFORM_JXL_THREADS` 設為正整數，可控制每次 JPEG XL 編碼使用的原生工作執行緒數。預設值為 `4`。
+
 ## 行為
 
 此變換重新編碼 user 訊息中的內嵌圖片和工具結果中的圖片。它也處理函式工具參數 JSON 中的圖片 data URL 和圖片區塊。可用 `max_edge_px` 縮放這些圖片。自訂工具的自由文字及其他 Base64 保持不變。

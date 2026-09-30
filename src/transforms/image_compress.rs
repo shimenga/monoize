@@ -985,15 +985,21 @@ fn fast_lossy_webp_config(quality: u8) -> Result<webp::WebPConfig, TransformErro
     Ok(config)
 }
 
+#[cfg(feature = "jpegxl")]
 struct LibJxlEncoder(*mut jxl_sys::JxlEncoder);
 
+#[cfg(feature = "jpegxl")]
 struct LibJxlParallelRunner(*mut std::ffi::c_void);
 
+#[cfg(feature = "jpegxl")]
 impl LibJxlParallelRunner {
     fn new() -> Result<Self, TransformError> {
-        // SAFETY: the query has no preconditions and a null memory manager requests the default
-        // allocator for the runner.
-        let worker_threads = unsafe { jxl_sys::JxlThreadParallelRunnerDefaultNumWorkerThreads() };
+        let worker_threads = jpegxl_worker_threads(
+            std::env::var("MONOIZE_IMAGE_TRANSFORM_JXL_THREADS")
+                .ok()
+                .as_deref(),
+        );
+        // SAFETY: a null memory manager requests the default allocator for the runner.
         let handle =
             unsafe { jxl_sys::JxlThreadParallelRunnerCreate(std::ptr::null(), worker_threads) };
         if handle.is_null() {
@@ -1005,6 +1011,7 @@ impl LibJxlParallelRunner {
     }
 }
 
+#[cfg(feature = "jpegxl")]
 impl Drop for LibJxlParallelRunner {
     fn drop(&mut self) {
         // SAFETY: the handle was returned by JxlThreadParallelRunnerCreate and is destroyed once.
@@ -1012,6 +1019,7 @@ impl Drop for LibJxlParallelRunner {
     }
 }
 
+#[cfg(feature = "jpegxl")]
 impl LibJxlEncoder {
     fn check(
         &self,
@@ -1029,6 +1037,7 @@ impl LibJxlEncoder {
     }
 }
 
+#[cfg(feature = "jpegxl")]
 impl Drop for LibJxlEncoder {
     fn drop(&mut self) {
         // SAFETY: the handle was returned by JxlEncoderCreate and is destroyed exactly once.
@@ -1036,6 +1045,28 @@ impl Drop for LibJxlEncoder {
     }
 }
 
+#[cfg(any(feature = "jpegxl", test))]
+fn jpegxl_worker_threads(raw: Option<&str>) -> usize {
+    raw.map(str::trim)
+        .filter(|value| !value.is_empty() && value.bytes().all(|byte| byte.is_ascii_digit()))
+        .and_then(|value| value.parse::<usize>().ok())
+        .filter(|value| *value > 0)
+        .unwrap_or(4)
+}
+
+#[cfg(not(feature = "jpegxl"))]
+fn encode_image_as_jpegxl(
+    _image: &DynamicImage,
+    _lossless: bool,
+    _quality: u8,
+    _effort: u8,
+) -> Result<Vec<u8>, TransformError> {
+    Err(TransformError::Apply(
+        "jpeg xl support is disabled in this build".to_string(),
+    ))
+}
+
+#[cfg(feature = "jpegxl")]
 fn encode_image_as_jpegxl(
     image: &DynamicImage,
     lossless: bool,
@@ -1479,6 +1510,24 @@ mod tests {
     }
 
     #[test]
+    fn jpegxl_worker_count_rejects_invalid_and_overflowing_configuration() {
+        assert_eq!(jpegxl_worker_threads(Some(" 2 ")), 2);
+        assert_eq!(jpegxl_worker_threads(Some("12")), 12);
+        for raw in [
+            None,
+            Some(""),
+            Some("0"),
+            Some("-1"),
+            Some("+2"),
+            Some("1.5"),
+            Some("unlimited"),
+            Some("184467440737095516160"),
+        ] {
+            assert_eq!(jpegxl_worker_threads(raw), 4, "{raw:?}");
+        }
+    }
+
+    #[test]
     fn encodes_explicit_lossy_webp_output_with_libwebp() {
         let original = STANDARD
             .decode(build_png_base64(64, 48))
@@ -1604,6 +1653,7 @@ mod tests {
 
     #[tokio::test]
     async fn compresses_user_message_base64_images_and_persists_cache() {
+        crate::node_config::ensure_rustls_crypto_provider().expect("test TLS provider");
         let temp_dir = TempDir::new().expect("temp dir");
         let cache = ImageTransformCache::new(
             temp_dir.path().join("cache"),
@@ -1709,6 +1759,7 @@ mod tests {
 
     #[tokio::test]
     async fn compresses_user_message_data_url_images_and_preserves_detail() {
+        crate::node_config::ensure_rustls_crypto_provider().expect("test TLS provider");
         let temp_dir = TempDir::new().expect("temp dir");
         let cache = ImageTransformCache::new(
             temp_dir.path().join("cache"),
@@ -1817,6 +1868,7 @@ mod tests {
 
     #[tokio::test]
     async fn compresses_assistant_output_base64_images() {
+        crate::node_config::ensure_rustls_crypto_provider().expect("test TLS provider");
         let temp_dir = TempDir::new().expect("temp dir");
         let cache = ImageTransformCache::new(
             temp_dir.path().join("cache"),
@@ -1897,6 +1949,7 @@ mod tests {
 
     #[tokio::test]
     async fn compresses_assistant_image_stream_delta_after_assistant_image_start() {
+        crate::node_config::ensure_rustls_crypto_provider().expect("test TLS provider");
         let temp_dir = TempDir::new().expect("temp dir");
         let cache = ImageTransformCache::new(
             temp_dir.path().join("cache"),
