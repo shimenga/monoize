@@ -1,7 +1,8 @@
-//! Gateway performance budget benchmark (gateway-performance-budget.spec.md).
+//! In-process gateway diagnostic and process-benchmark fixture preparation.
+//! Use scripts/gateway_benchmark.py for GPB qualification evidence.
 //!
 //! Run explicitly (it is long):
-//!   cargo test --release --test gateway_benchmark -- --ignored --nocapture
+//!   cargo test --release --test gateway_benchmark gateway_benchmark_ramp -- --ignored --nocapture
 //! Step duration and rates are env-tunable:
 //!   GATEWAY_BENCH_STEP_SECONDS (default 60), GATEWAY_BENCH_SEED_ROWS (default 500000).
 
@@ -9,6 +10,108 @@ use sea_orm::ConnectionTrait;
 use std::time::Instant;
 
 include!("api/support.rs");
+
+#[tokio::test]
+#[ignore = "fixture preparation for scripts/gateway_benchmark.py"]
+async fn prepare_process_benchmark_fixture() {
+    let Ok(directory) = std::env::var("GATEWAY_BENCH_DIRECTORY") else {
+        eprintln!("fixture preparation skipped: use scripts/gateway_benchmark.py");
+        return;
+    };
+    let directory = std::path::PathBuf::from(directory)
+        .canonicalize()
+        .expect("existing benchmark directory");
+    let root = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .canonicalize()
+        .unwrap();
+    assert!(
+        directory.starts_with(root),
+        "fixture must remain inside the project"
+    );
+    let snapshot = directory.join("gateway.db");
+    assert!(
+        !snapshot.exists(),
+        "refuse to overwrite an existing database"
+    );
+    let upstream = std::env::var("GATEWAY_BENCH_UPSTREAM_URL").expect("mock upstream URL");
+    let parsed = url::Url::parse(&upstream).expect("mock upstream URL parses");
+    assert_eq!(parsed.scheme(), "http");
+    assert_eq!(parsed.host_str(), Some("127.0.0.1"));
+    assert!(parsed.port().is_some());
+    assert!(parsed.username().is_empty() && parsed.password().is_none());
+    assert!(parsed.query().is_none() && parsed.fragment().is_none());
+    let rows = bench_seed_rows();
+    let ctx = setup().await;
+    let owner: String = ctx
+        .state
+        .db_pool
+        .read()
+        .query_one(ctx.state.db_pool.stmt(
+            "SELECT user_id FROM api_keys WHERE id = $1",
+            vec![ctx.api_key_id.clone().into()],
+        ))
+        .await
+        .unwrap()
+        .unwrap()
+        .try_get("", "user_id")
+        .unwrap();
+    let tx = ctx.state.db_pool.begin_write().await.unwrap();
+    tx.execute(ctx.state.db_pool.stmt(
+        "UPDATE users SET balance_nano_usd = '1000000000000000000', balance_unlimited = 0 WHERE id = $1",
+        vec![owner.clone().into()],
+    )).await.unwrap();
+    tx.execute(ctx.state.db_pool.stmt(
+        "UPDATE api_keys SET spend_limit_total_nano_usd = '1000000000000000000' WHERE id = $1",
+        vec![ctx.api_key_id.clone().into()],
+    ))
+    .await
+    .unwrap();
+    tx.execute(ctx.state.db_pool.stmt(
+        "UPDATE monoize_providers SET channel_base_url = $1 WHERE name = 'up-chat'",
+        vec![upstream.into()],
+    ))
+    .await
+    .unwrap();
+    tx.commit().await.unwrap();
+
+    let now = Utc::now().timestamp_millis();
+    for start in (0..rows).step_by(1000) {
+        let end = (start + 1000).min(rows);
+        ctx.state.db_pool.write().await.execute(ctx.state.db_pool.stmt(
+            "WITH RECURSIVE fixture(n) AS (
+                SELECT $1 UNION ALL SELECT n + 1 FROM fixture WHERE n + 1 < $2
+             ) INSERT INTO request_logs
+                (id, user_id, api_key_id, model, status, is_stream, input_tokens,
+                 output_tokens, charge_nano_usd, duration_ms, ttfb_ms, created_at, created_at_unix_ms)
+             SELECT 'benchmark-history-' || n, $3, $4, 'gpt-5-mini-chat', 'success', 1,
+                    100, 50, '1000', 1300, 300,
+                    strftime('%Y-%m-%dT%H:%M:%fZ', ($5 - n * 60) / 1000.0, 'unixepoch'),
+                    $5 - n * 60 FROM fixture",
+            vec![(start as i64).into(), (end as i64).into(), owner.clone().into(),
+                 ctx.api_key_id.clone().into(), now.into()],
+        )).await.expect("seed concentrated history");
+    }
+    ctx.state
+        .db_pool
+        .write()
+        .await
+        .execute(
+            ctx.state
+                .db_pool
+                .stmt("VACUUM INTO $1", vec![snapshot.to_str().unwrap().into()]),
+        )
+        .await
+        .expect("snapshot benchmark fixture");
+    std::fs::write(
+        directory.join("fixture.json"),
+        serde_json::to_vec(&json!({
+            "auth_header": ctx.auth_header, "api_key_id": ctx.api_key_id,
+            "seed_rows": rows, "model": "gpt-5-mini-chat",
+        }))
+        .unwrap(),
+    )
+    .expect("write benchmark-only credentials");
+}
 
 /// GPB2: upstream TTFB 300 ms, 20 SSE chunks at 50 ms intervals, total ~1.3 s.
 const UPSTREAM_TTFB_MS: u64 = 300;
@@ -34,7 +137,8 @@ fn bench_seed_rows() -> usize {
 
 /// Fixed-timing SSE chat upstream (GPB2): the upstream is never the bottleneck.
 async fn start_fixed_upstream() -> SocketAddr {
-    async fn chat_completions() -> Sse<impl futures_util::Stream<Item = Result<Event, Infallible>>> {
+    async fn chat_completions() -> Sse<impl futures_util::Stream<Item = Result<Event, Infallible>>>
+    {
         eprintln!("UPSTREAM HIT");
         let stream = futures_util::stream::unfold(
             (0u64, tokio::time::Instant::now()),
@@ -81,7 +185,10 @@ async fn start_fixed_upstream() -> SocketAddr {
                 } else {
                     Value::String("[DONE]".to_string())
                 };
-                Some((Ok(Event::default().data(data.to_string())), (index + 1, started)))
+                Some((
+                    Ok(Event::default().data(data.to_string())),
+                    (index + 1, started),
+                ))
             },
         );
         Sse::new(stream)
@@ -111,7 +218,12 @@ async fn seed_request_logs(ctx: &TestContext, total_rows: usize) {
     let mut row = 0usize;
     while row < total_rows {
         let end = (row + chunk).min(total_rows);
-        let tx = ctx.state.db_pool.begin_write().await.expect("begin seed tx");
+        let tx = ctx
+            .state
+            .db_pool
+            .begin_write()
+            .await
+            .expect("begin seed tx");
         for index in row..end {
             let api_key_id = if index < concentrated {
                 ctx.api_key_id.as_str()
@@ -252,7 +364,12 @@ async fn gateway_benchmark_ramp() {
     // Point the chat channel at the fixed-timing upstream (direct column update
     // plus a generation bump keeps this benchmark self-contained).
     let upstream_base = format!("http://{}", start_fixed_upstream().await);
-    let providers = ctx.state.monoize_store.list_providers().await.expect("list providers");
+    let providers = ctx
+        .state
+        .monoize_store
+        .list_providers()
+        .await
+        .expect("list providers");
     let chat_provider = providers
         .iter()
         .find(|provider| provider.name == "up-chat")
@@ -289,6 +406,8 @@ async fn gateway_benchmark_ramp() {
 
     let step_seconds = bench_step_seconds();
     let mut summary = serde_json::Map::new();
+    summary.insert("mode".to_owned(), json!("in_process_diagnostic"));
+    summary.insert("qualification_passed".to_owned(), json!(false));
     summary.insert(
         "config".to_string(),
         json!({
@@ -301,7 +420,15 @@ async fn gateway_benchmark_ramp() {
     let mut steps = Vec::new();
     for rpm in [100u32, 500, 1000, 2000] {
         let stats = Arc::new(tokio::sync::Mutex::new(StepStats::default()));
-        run_step(&client, &base_url, &ctx.auth_header, rpm, step_seconds, &stats).await;
+        run_step(
+            &client,
+            &base_url,
+            &ctx.auth_header,
+            rpm,
+            step_seconds,
+            &stats,
+        )
+        .await;
         let stats = stats.lock().await;
         let mut ttfb: Vec<f64> = stats.samples.iter().map(|s| s.0).collect();
         ttfb.sort_by(|a, b| a.partial_cmp(b).expect("ttfb ordering"));
@@ -336,7 +463,10 @@ async fn gateway_benchmark_ramp() {
                 "max": overhead.last().copied().unwrap_or(0.0),
             },
         });
-        println!("{}", serde_json::to_string_pretty(&step).expect("step json"));
+        println!(
+            "{}",
+            serde_json::to_string_pretty(&step).expect("step json")
+        );
         steps.push(step);
     }
     summary.insert("steps".to_string(), Value::Array(steps));
@@ -356,7 +486,12 @@ async fn bench_debug_single_request() {
     monoize::monoize_routing::set_allow_private_upstream_override(true);
     let ctx = setup().await;
     let upstream_base = format!("http://{}", start_fixed_upstream().await);
-    let providers = ctx.state.monoize_store.list_providers().await.expect("list providers");
+    let providers = ctx
+        .state
+        .monoize_store
+        .list_providers()
+        .await
+        .expect("list providers");
     let chat_provider = providers
         .iter()
         .find(|provider| provider.name == "up-chat")

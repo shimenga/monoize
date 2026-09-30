@@ -1,0 +1,4809 @@
+{
+  "schema_version": 1,
+  "profile": "qualification",
+  "host": "Dell",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "failures": [
+    "100rpm:request_errors",
+    "100rpm:gateway_overhead_p50",
+    "100rpm:gateway_overhead_p90",
+    "100rpm:gateway_overhead_p99",
+    "100rpm:gateway_overhead_max",
+    "100rpm:ttfb_p50",
+    "100rpm:ttfb_p99",
+    "500rpm:load_generator_late",
+    "500rpm:request_errors",
+    "500rpm:gateway_overhead_p50",
+    "500rpm:gateway_overhead_p90",
+    "500rpm:gateway_overhead_p99",
+    "500rpm:gateway_overhead_max",
+    "500rpm:ttfb_p50",
+    "500rpm:ttfb_p99",
+    "1000rpm:request_errors",
+    "1000rpm:gateway_overhead_p50",
+    "1000rpm:gateway_overhead_p90",
+    "1000rpm:gateway_overhead_p99",
+    "1000rpm:gateway_overhead_max",
+    "1000rpm:ttfb_p50",
+    "1000rpm:ttfb_p99",
+    "2000rpm:load_generator_late",
+    "2000rpm:request_errors",
+    "2000rpm:gateway_overhead_p50",
+    "2000rpm:gateway_overhead_p90",
+    "2000rpm:gateway_overhead_p99",
+    "2000rpm:gateway_overhead_max",
+    "2000rpm:ttfb_p50",
+    "2000rpm:ttfb_p99",
+    "steady:load_generator_late",
+    "steady:request_errors",
+    "steady:gateway_overhead_p50",
+    "steady:gateway_overhead_p90",
+    "steady:gateway_overhead_p99",
+    "steady:gateway_overhead_max",
+    "steady:ttfb_p50",
+    "steady:ttfb_p99",
+    "steady:load_generator_late",
+    "steady:request_errors",
+    "steady:gateway_overhead_p50",
+    "steady:gateway_overhead_p90",
+    "steady:gateway_overhead_p99",
+    "steady:gateway_overhead_max",
+    "steady:ttfb_p50",
+    "steady:ttfb_p99",
+    "steady:load_generator_late",
+    "steady:request_errors",
+    "steady:gateway_overhead_p50",
+    "steady:gateway_overhead_p90",
+    "steady:gateway_overhead_p99",
+    "steady:gateway_overhead_max",
+    "steady:ttfb_p50",
+    "steady:ttfb_p99",
+    "steady:request_errors",
+    "steady:gateway_overhead_p50",
+    "steady:gateway_overhead_p90",
+    "steady:gateway_overhead_p99",
+    "steady:gateway_overhead_max",
+    "steady:ttfb_p50",
+    "steady:ttfb_p99",
+    "CPU_budget_or_evidence",
+    "slow_connection_acquire"
+  ],
+  "qualification_passed": false,
+  "production_capacity_verified": false,
+  "worker_threads": 6,
+  "wal_limit_bytes": 268435456,
+  "runner_sha256": "230288648e17129448c671beda06861b4c7ce91ac3aabac0ee729308c778138c",
+  "fixture_source_sha256": "80e056cb381268959443bd3161802ae87f9b610cbce25f62fe7f8111cbd07989",
+  "mock_source_sha256": "7a9603b0a6fe878f421c6f40f15b942cd8733a9ea0994e4673c2f63c5eed0cd4",
+  "mock_lock_sha256": "926c168c8f6d2288042ab1deb1d5038a01ee99351443c4690ce23e162ac57331",
+  "git_revision": "a3b1111fd5cb51e871e444a67bfc511d6c1a5c43",
+  "working_diff_sha256": "2508d4499d8371bf66f54732fb2a8437ad084e5f57461aecb14ec260067eccba",
+  "windows_timer_period_ms": 1,
+  "mock_binary_sha256": "3edab7c27918cb8155da2971d297078dddc5ed39cc95f1477708ff1c6631508b",
+  "binary_sha256": "9d3d4b670187ee209d50479784a352fc5ca3aed4c07c04756831b9444b8726fb",
+  "release_built": true,
+  "mock_pids": [
+    30448
+  ],
+  "fixture": {
+    "history_rows": 500000,
+    "concentrated_key_rows": 500000,
+    "distinct_request_keys": 1,
+    "finite_spend_limit": true
+  },
+  "calibration": {
+    "rpm": 22000,
+    "seconds": 60,
+    "elapsed_seconds": 61.34980390002602,
+    "scheduled": 22000,
+    "dispatched": 22000,
+    "served": 22000,
+    "gateway_saturated": 0,
+    "http_5xx": 0,
+    "other_errors": 0,
+    "error_samples": [],
+    "dispatch_lateness_ms": {
+      "p50": 0.5661727336701006,
+      "p90": 0.8362364023923874,
+      "p99": 1.8188818357884884,
+      "max": 21.250918187433854
+    },
+    "ttfb_ms": {
+      "p50": 303.01889998372644,
+      "p90": 303.6869000061415,
+      "p99": 305.420899996534,
+      "max": 339.15389998583123
+    },
+    "gateway_overhead_ms": {
+      "p50": 0.5864000092258266,
+      "p90": 1.0304000053024538,
+      "p99": 2.2583000101144535,
+      "max": 26.973899992171482
+    },
+    "upstream_ms": {
+      "p50": 1301.0641999999998,
+      "p90": 1303.0095,
+      "p99": 1307.8036,
+      "max": 1332.4486
+    },
+    "load_generator_cpu_seconds": 53.6875,
+    "cpu_seconds": {
+      "client": 53.6875,
+      "coordinator": 3.21875,
+      "upstream": 39.671875
+    },
+    "mock_errors": 0,
+    "mock_error_samples": []
+  },
+  "gateway_pid": 12384,
+  "steps": [
+    {
+      "rpm": 100,
+      "seconds": 60,
+      "scheduled": 100,
+      "dispatched": 100,
+      "served": 84,
+      "gateway_saturated": 0,
+      "http_5xx": 0,
+      "other_errors": 16,
+      "elapsed_seconds": 75.0503316000104,
+      "error_samples": [
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        }
+      ],
+      "dispatch_lateness_ms": {
+        "p50": 1.1320999765302986,
+        "p90": 2.892499993322417,
+        "p99": 5.7477999944239855,
+        "max": 7.492300006560981
+      },
+      "ttfb_ms": {
+        "p50": 5932.597400009399,
+        "p90": 15001.295299996855,
+        "p99": 15018.426599999657,
+        "max": 15018.426599999657
+      },
+      "gateway_overhead_ms": {
+        "p50": 17846.166599989054,
+        "p90": 26350.16130000014,
+        "p99": 28561.090600002335,
+        "max": 28561.090600002335
+      },
+      "upstream_ms": {
+        "p50": 1309.1059,
+        "p90": 1314.7713999999999,
+        "p99": 1316.4247,
+        "max": 1316.4247
+      },
+      "failures": [
+        "request_errors",
+        "gateway_overhead_p50",
+        "gateway_overhead_p90",
+        "gateway_overhead_p99",
+        "gateway_overhead_max",
+        "ttfb_p50",
+        "ttfb_p99"
+      ]
+    },
+    {
+      "rpm": 500,
+      "seconds": 60,
+      "scheduled": 500,
+      "dispatched": 500,
+      "served": 171,
+      "gateway_saturated": 0,
+      "http_5xx": 0,
+      "other_errors": 329,
+      "elapsed_seconds": 87.01242089999141,
+      "error_samples": [
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        }
+      ],
+      "dispatch_lateness_ms": {
+        "p50": 2.03719999990426,
+        "p90": 5.2977000013925135,
+        "p99": 20.79710000543855,
+        "max": 172.64820000855252
+      },
+      "ttfb_ms": {
+        "p50": 9554.996199993184,
+        "p90": 14804.40369999269,
+        "p99": 15015.139899973292,
+        "max": 15016.33439998841
+      },
+      "gateway_overhead_ms": {
+        "p50": 21037.67540000805,
+        "p90": 27428.709099999134,
+        "p99": 28554.64389999749,
+        "max": 28630.23440001588
+      },
+      "upstream_ms": {
+        "p50": 1307.277,
+        "p90": 1314.3093000000001,
+        "p99": 1332.469,
+        "max": 1335.0104000000001
+      },
+      "failures": [
+        "load_generator_late",
+        "request_errors",
+        "gateway_overhead_p50",
+        "gateway_overhead_p90",
+        "gateway_overhead_p99",
+        "gateway_overhead_max",
+        "ttfb_p50",
+        "ttfb_p99"
+      ]
+    },
+    {
+      "rpm": 1000,
+      "seconds": 60,
+      "scheduled": 1000,
+      "dispatched": 1000,
+      "served": 176,
+      "gateway_saturated": 0,
+      "http_5xx": 0,
+      "other_errors": 824,
+      "elapsed_seconds": 76.44930010000826,
+      "error_samples": [
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        }
+      ],
+      "dispatch_lateness_ms": {
+        "p50": 1.0254000080749393,
+        "p90": 2.777000016067177,
+        "p99": 7.78730001184158,
+        "max": 32.545900030527264
+      },
+      "ttfb_ms": {
+        "p50": 10797.147300007055,
+        "p90": 13170.663900004001,
+        "p99": 15004.607999988366,
+        "max": 15009.121800016146
+      },
+      "gateway_overhead_ms": {
+        "p50": 24623.09239998683,
+        "p90": 27505.7670000001,
+        "p99": 28388.333399999487,
+        "max": 28454.228399981617
+      },
+      "upstream_ms": {
+        "p50": 1309.2280999999998,
+        "p90": 1314.4472,
+        "p99": 1316.6264,
+        "max": 1316.8727
+      },
+      "failures": [
+        "request_errors",
+        "gateway_overhead_p50",
+        "gateway_overhead_p90",
+        "gateway_overhead_p99",
+        "gateway_overhead_max",
+        "ttfb_p50",
+        "ttfb_p99"
+      ]
+    },
+    {
+      "rpm": 2000,
+      "seconds": 60,
+      "scheduled": 2000,
+      "dispatched": 2000,
+      "served": 157,
+      "gateway_saturated": 0,
+      "http_5xx": 0,
+      "other_errors": 1843,
+      "elapsed_seconds": 83.3097949999792,
+      "error_samples": [
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        }
+      ],
+      "dispatch_lateness_ms": {
+        "p50": 2.634399977978319,
+        "p90": 12.112899974454194,
+        "p99": 83.73319997917861,
+        "max": 221.8632999865804
+      },
+      "ttfb_ms": {
+        "p50": 13763.73269999749,
+        "p90": 14943.023100000573,
+        "p99": 15023.285000002943,
+        "max": 15042.427999986103
+      },
+      "gateway_overhead_ms": {
+        "p50": 23414.982500015863,
+        "p90": 28319.03369998909,
+        "p99": 28636.048199994264,
+        "max": 28676.668399980415
+      },
+      "upstream_ms": {
+        "p50": 1305.8969,
+        "p90": 1314.1038,
+        "p99": 1317.7189,
+        "max": 1317.9346
+      },
+      "failures": [
+        "load_generator_late",
+        "request_errors",
+        "gateway_overhead_p50",
+        "gateway_overhead_p90",
+        "gateway_overhead_p99",
+        "gateway_overhead_max",
+        "ttfb_p50",
+        "ttfb_p99"
+      ]
+    }
+  ],
+  "steady_steps": [
+    {
+      "rpm": 2000,
+      "seconds": 60,
+      "scheduled": 2000,
+      "dispatched": 2000,
+      "served": 179,
+      "gateway_saturated": 0,
+      "http_5xx": 0,
+      "other_errors": 1821,
+      "elapsed_seconds": 78.89384340000106,
+      "error_samples": [
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        }
+      ],
+      "dispatch_lateness_ms": {
+        "p50": 1.4980000269133598,
+        "p90": 3.8810000114608556,
+        "p99": 12.727700028335676,
+        "max": 62.02169999596663
+      },
+      "ttfb_ms": {
+        "p50": 11714.532099984353,
+        "p90": 12813.02540001343,
+        "p99": 15011.464200011687,
+        "max": 15011.70300002559
+      },
+      "gateway_overhead_ms": {
+        "p50": 25392.981600008712,
+        "p90": 26412.40510001648,
+        "p99": 27295.18590000179,
+        "max": 27517.422900008416
+      },
+      "upstream_ms": {
+        "p50": 1310.33,
+        "p90": 1314.7386000000001,
+        "p99": 1319.9304,
+        "max": 1320.1346
+      },
+      "failures": [
+        "load_generator_late",
+        "request_errors",
+        "gateway_overhead_p50",
+        "gateway_overhead_p90",
+        "gateway_overhead_p99",
+        "gateway_overhead_max",
+        "ttfb_p50",
+        "ttfb_p99"
+      ]
+    },
+    {
+      "rpm": 2000,
+      "seconds": 60,
+      "scheduled": 2000,
+      "dispatched": 2000,
+      "served": 234,
+      "gateway_saturated": 0,
+      "http_5xx": 0,
+      "other_errors": 1766,
+      "elapsed_seconds": 77.30985600000713,
+      "error_samples": [
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        }
+      ],
+      "dispatch_lateness_ms": {
+        "p50": 1.1481000110507011,
+        "p90": 3.4508999960962683,
+        "p99": 14.427699992666021,
+        "max": 55.95990002620965
+      },
+      "ttfb_ms": {
+        "p50": 12210.944999998901,
+        "p90": 14008.756700000959,
+        "p99": 15008.86700002593,
+        "max": 15014.08839999931
+      },
+      "gateway_overhead_ms": {
+        "p50": 26429.815900016725,
+        "p90": 27794.734499997852,
+        "p99": 28267.028100020212,
+        "max": 28515.789699996993
+      },
+      "upstream_ms": {
+        "p50": 1308.4204,
+        "p90": 1314.6957000000002,
+        "p99": 1316.1796,
+        "max": 1322.4755
+      },
+      "failures": [
+        "load_generator_late",
+        "request_errors",
+        "gateway_overhead_p50",
+        "gateway_overhead_p90",
+        "gateway_overhead_p99",
+        "gateway_overhead_max",
+        "ttfb_p50",
+        "ttfb_p99"
+      ]
+    },
+    {
+      "rpm": 2000,
+      "seconds": 60,
+      "scheduled": 2000,
+      "dispatched": 2000,
+      "served": 231,
+      "gateway_saturated": 0,
+      "http_5xx": 0,
+      "other_errors": 1769,
+      "elapsed_seconds": 87.68274449999444,
+      "error_samples": [
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        }
+      ],
+      "dispatch_lateness_ms": {
+        "p50": 1.6273999935947359,
+        "p90": 4.505699995206669,
+        "p99": 14.83830000506714,
+        "max": 56.54709998634644
+      },
+      "ttfb_ms": {
+        "p50": 12572.850099997595,
+        "p90": 14161.917699995684,
+        "p99": 15002.336099976674,
+        "max": 15304.887700011022
+      },
+      "gateway_overhead_ms": {
+        "p50": 26446.2210999942,
+        "p90": 27941.113600013112,
+        "p99": 28247.607899996794,
+        "max": 28427.717900001528
+      },
+      "upstream_ms": {
+        "p50": 1307.7905,
+        "p90": 1313.5312999999999,
+        "p99": 1315.188,
+        "max": 1315.7912000000001
+      },
+      "failures": [
+        "load_generator_late",
+        "request_errors",
+        "gateway_overhead_p50",
+        "gateway_overhead_p90",
+        "gateway_overhead_p99",
+        "gateway_overhead_max",
+        "ttfb_p50",
+        "ttfb_p99"
+      ]
+    },
+    {
+      "rpm": 2000,
+      "seconds": 60,
+      "scheduled": 2000,
+      "dispatched": 2000,
+      "served": 232,
+      "gateway_saturated": 0,
+      "http_5xx": 0,
+      "other_errors": 1768,
+      "elapsed_seconds": 87.41395310001099,
+      "error_samples": [
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        },
+        {
+          "category": "other_errors",
+          "http_status": 200,
+          "upstream_observed": false
+        }
+      ],
+      "dispatch_lateness_ms": {
+        "p50": 1.860599993960932,
+        "p90": 9.676599991507828,
+        "p99": 22.890200023539364,
+        "max": 44.365699985064566
+      },
+      "ttfb_ms": {
+        "p50": 11716.294100013329,
+        "p90": 12672.42599997553,
+        "p99": 15010.565100004897,
+        "max": 15017.543800000567
+      },
+      "gateway_overhead_ms": {
+        "p50": 25872.331499999826,
+        "p90": 27216.686599986715,
+        "p99": 27598.02049999448,
+        "max": 27657.27340000305
+      },
+      "upstream_ms": {
+        "p50": 1305.5113000000001,
+        "p90": 1313.8354,
+        "p99": 1317.3930999999998,
+        "max": 1326.3066999999999
+      },
+      "failures": [
+        "request_errors",
+        "gateway_overhead_p50",
+        "gateway_overhead_p90",
+        "gateway_overhead_p99",
+        "gateway_overhead_max",
+        "ttfb_p50",
+        "ttfb_p99"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "seconds": 1.0169218000082765,
+      "rpm": 100,
+      "cpu_percent_of_workers": 19.230248534701513,
+      "wal_bytes": 12392
+    },
+    {
+      "seconds": 2.0246501000074204,
+      "rpm": 100,
+      "cpu_percent_of_workers": 15.505171384006259,
+      "wal_bytes": 12392
+    },
+    {
+      "seconds": 3.0325389000063296,
+      "rpm": 100,
+      "cpu_percent_of_workers": 4.392432313304925,
+      "wal_bytes": 12392
+    },
+    {
+      "seconds": 4.039526900014607,
+      "rpm": 100,
+      "cpu_percent_of_workers": 33.61923544907028,
+      "wal_bytes": 12392
+    },
+    {
+      "seconds": 5.045828300004359,
+      "rpm": 100,
+      "cpu_percent_of_workers": 53.8274781961133,
+      "wal_bytes": 16512
+    },
+    {
+      "seconds": 6.052670700009912,
+      "rpm": 100,
+      "cpu_percent_of_workers": 93.11288439926938,
+      "wal_bytes": 16512
+    },
+    {
+      "seconds": 7.056543100014096,
+      "rpm": 100,
+      "cpu_percent_of_workers": 73.4136297266062,
+      "wal_bytes": 16512
+    },
+    {
+      "seconds": 8.06020730000455,
+      "rpm": 100,
+      "cpu_percent_of_workers": 71.6125971223081,
+      "wal_bytes": 65952
+    },
+    {
+      "seconds": 9.065801199991256,
+      "rpm": 100,
+      "cpu_percent_of_workers": 92.19261705402039,
+      "wal_bytes": 115392
+    },
+    {
+      "seconds": 10.074341600004118,
+      "rpm": 100,
+      "cpu_percent_of_workers": 80.56196856265134,
+      "wal_bytes": 325512
+    },
+    {
+      "seconds": 11.077081099996576,
+      "rpm": 100,
+      "cpu_percent_of_workers": 52.20074605657171,
+      "wal_bytes": 387312
+    },
+    {
+      "seconds": 12.087784400006058,
+      "rpm": 100,
+      "cpu_percent_of_workers": 17.520802923238907,
+      "wal_bytes": 482072
+    },
+    {
+      "seconds": 13.094125500007067,
+      "rpm": 100,
+      "cpu_percent_of_workers": 9.833478264301647,
+      "wal_bytes": 482072
+    },
+    {
+      "seconds": 14.102950300002703,
+      "rpm": 100,
+      "cpu_percent_of_workers": 77.18345478191071,
+      "wal_bytes": 482072
+    },
+    {
+      "seconds": 15.110079300007783,
+      "rpm": 100,
+      "cpu_percent_of_workers": 76.02054950221259,
+      "wal_bytes": 486192
+    },
+    {
+      "seconds": 16.116145700012567,
+      "rpm": 100,
+      "cpu_percent_of_workers": 97.58509312393944,
+      "wal_bytes": 486192
+    },
+    {
+      "seconds": 17.1295822999964,
+      "rpm": 100,
+      "cpu_percent_of_workers": 86.59684944086943,
+      "wal_bytes": 486192
+    },
+    {
+      "seconds": 18.13701169998967,
+      "rpm": 100,
+      "cpu_percent_of_workers": 73.67141558554452,
+      "wal_bytes": 618032
+    },
+    {
+      "seconds": 19.144521900016116,
+      "rpm": 100,
+      "cpu_percent_of_workers": 86.07232958805162,
+      "wal_bytes": 774592
+    },
+    {
+      "seconds": 20.153297300013946,
+      "rpm": 100,
+      "cpu_percent_of_workers": 75.12202418909402,
+      "wal_bytes": 824032
+    },
+    {
+      "seconds": 21.16068160001305,
+      "rpm": 100,
+      "cpu_percent_of_workers": 64.10992640384691,
+      "wal_bytes": 824032
+    },
+    {
+      "seconds": 22.166537700017216,
+      "rpm": 100,
+      "cpu_percent_of_workers": 50.22670075085698,
+      "wal_bytes": 931152
+    },
+    {
+      "seconds": 23.16808140001376,
+      "rpm": 100,
+      "cpu_percent_of_workers": 18.721100237627837,
+      "wal_bytes": 980592
+    },
+    {
+      "seconds": 24.17625799999223,
+      "rpm": 100,
+      "cpu_percent_of_workers": 40.03721504168551,
+      "wal_bytes": 1030032
+    },
+    {
+      "seconds": 25.18723109998973,
+      "rpm": 100,
+      "cpu_percent_of_workers": 66.4582470099018,
+      "wal_bytes": 1034152
+    },
+    {
+      "seconds": 26.19470900000306,
+      "rpm": 100,
+      "cpu_percent_of_workers": 58.934295232892495,
+      "wal_bytes": 1034152
+    },
+    {
+      "seconds": 27.205708399997093,
+      "rpm": 100,
+      "cpu_percent_of_workers": 68.77476880837939,
+      "wal_bytes": 1034152
+    },
+    {
+      "seconds": 28.213124300003983,
+      "rpm": 100,
+      "cpu_percent_of_workers": 48.08093658206974,
+      "wal_bytes": 1034152
+    },
+    {
+      "seconds": 29.224330400000326,
+      "rpm": 100,
+      "cpu_percent_of_workers": 27.29825963942117,
+      "wal_bytes": 1058872
+    },
+    {
+      "seconds": 30.234867599996505,
+      "rpm": 100,
+      "cpu_percent_of_workers": 56.69426782792687,
+      "wal_bytes": 1104192
+    },
+    {
+      "seconds": 31.255100700014737,
+      "rpm": 100,
+      "cpu_percent_of_workers": 40.840339983011816,
+      "wal_bytes": 1104192
+    },
+    {
+      "seconds": 32.25952479999978,
+      "rpm": 100,
+      "cpu_percent_of_workers": 40.70533220705819,
+      "wal_bytes": 1128912
+    },
+    {
+      "seconds": 33.260510199994314,
+      "rpm": 100,
+      "cpu_percent_of_workers": 60.87751130069709,
+      "wal_bytes": 1128912
+    },
+    {
+      "seconds": 34.264884100004565,
+      "rpm": 100,
+      "cpu_percent_of_workers": 79.59975529616085,
+      "wal_bytes": 1203072
+    },
+    {
+      "seconds": 35.273001399997156,
+      "rpm": 100,
+      "cpu_percent_of_workers": 58.121956641782276,
+      "wal_bytes": 1363752
+    },
+    {
+      "seconds": 36.28234309999971,
+      "rpm": 100,
+      "cpu_percent_of_workers": 43.60308968365761,
+      "wal_bytes": 1429672
+    },
+    {
+      "seconds": 37.288995400012936,
+      "rpm": 100,
+      "cpu_percent_of_workers": 70.62393837382152,
+      "wal_bytes": 1429672
+    },
+    {
+      "seconds": 38.29322900000261,
+      "rpm": 100,
+      "cpu_percent_of_workers": 70.2753987392896,
+      "wal_bytes": 1483232
+    },
+    {
+      "seconds": 39.301129200001014,
+      "rpm": 100,
+      "cpu_percent_of_workers": 79.06288737726838,
+      "wal_bytes": 1507952
+    },
+    {
+      "seconds": 40.31000789999962,
+      "rpm": 100,
+      "cpu_percent_of_workers": 56.78746777659786,
+      "wal_bytes": 1549152
+    },
+    {
+      "seconds": 41.31414150001365,
+      "rpm": 100,
+      "cpu_percent_of_workers": 68.46698487037926,
+      "wal_bytes": 1549152
+    },
+    {
+      "seconds": 42.320635100011714,
+      "rpm": 100,
+      "cpu_percent_of_workers": 90.81652382109098,
+      "wal_bytes": 1549152
+    },
+    {
+      "seconds": 43.32902110001305,
+      "rpm": 100,
+      "cpu_percent_of_workers": 35.38038343777682,
+      "wal_bytes": 1742792
+    },
+    {
+      "seconds": 44.3330227000115,
+      "rpm": 100,
+      "cpu_percent_of_workers": 17.378375359853678,
+      "wal_bytes": 1833432
+    },
+    {
+      "seconds": 45.340509200003,
+      "rpm": 100,
+      "cpu_percent_of_workers": 1.033926178341302,
+      "wal_bytes": 1837552
+    },
+    {
+      "seconds": 46.34668640000746,
+      "rpm": 100,
+      "cpu_percent_of_workers": 55.90466569879615,
+      "wal_bytes": 1837552
+    },
+    {
+      "seconds": 47.35641450001276,
+      "rpm": 100,
+      "cpu_percent_of_workers": 74.01951409784544,
+      "wal_bytes": 1837552
+    },
+    {
+      "seconds": 48.37050389999058,
+      "rpm": 100,
+      "cpu_percent_of_workers": 75.24196913507055,
+      "wal_bytes": 1837552
+    },
+    {
+      "seconds": 49.376273800007766,
+      "rpm": 100,
+      "cpu_percent_of_workers": 92.95325236093854,
+      "wal_bytes": 1837552
+    },
+    {
+      "seconds": 50.38239539999631,
+      "rpm": 100,
+      "cpu_percent_of_workers": 64.19038547037312,
+      "wal_bytes": 1891112
+    },
+    {
+      "seconds": 51.39924030000111,
+      "rpm": 100,
+      "cpu_percent_of_workers": 70.68432953704229,
+      "wal_bytes": 1891112
+    },
+    {
+      "seconds": 52.406454800016945,
+      "rpm": 100,
+      "cpu_percent_of_workers": 75.75554495306987,
+      "wal_bytes": 1944672
+    },
+    {
+      "seconds": 53.41125460001058,
+      "rpm": 100,
+      "cpu_percent_of_workers": 84.2311241176629,
+      "wal_bytes": 2101232
+    },
+    {
+      "seconds": 54.41694379999535,
+      "rpm": 100,
+      "cpu_percent_of_workers": 96.06803308099187,
+      "wal_bytes": 2158912
+    },
+    {
+      "seconds": 55.424874499993166,
+      "rpm": 100,
+      "cpu_percent_of_workers": 68.46742208250657,
+      "wal_bytes": 2228952
+    },
+    {
+      "seconds": 56.4338129000098,
+      "rpm": 100,
+      "cpu_percent_of_workers": 70.98013449795627,
+      "wal_bytes": 2282512
+    },
+    {
+      "seconds": 57.43966199998977,
+      "rpm": 100,
+      "cpu_percent_of_workers": 90.61581238691618,
+      "wal_bytes": 2282512
+    },
+    {
+      "seconds": 58.44245339999907,
+      "rpm": 100,
+      "cpu_percent_of_workers": 99.72163702149075,
+      "wal_bytes": 2282512
+    },
+    {
+      "seconds": 59.450230999995256,
+      "rpm": 100,
+      "cpu_percent_of_workers": 90.70081533896536,
+      "wal_bytes": 2331952
+    },
+    {
+      "seconds": 60.464967700012494,
+      "rpm": 100,
+      "cpu_percent_of_workers": 85.45936103279486,
+      "wal_bytes": 2607992
+    },
+    {
+      "seconds": 61.47176580000087,
+      "rpm": 100,
+      "cpu_percent_of_workers": 84.83991643175837,
+      "wal_bytes": 2607992
+    },
+    {
+      "seconds": 62.480767000000924,
+      "rpm": 100,
+      "cpu_percent_of_workers": 92.1393849680206,
+      "wal_bytes": 2607992
+    },
+    {
+      "seconds": 63.489729199995054,
+      "rpm": 100,
+      "cpu_percent_of_workers": 83.36742777263875,
+      "wal_bytes": 2888152
+    },
+    {
+      "seconds": 64.4967015000002,
+      "rpm": 100,
+      "cpu_percent_of_workers": 71.89456287224924,
+      "wal_bytes": 3073552
+    },
+    {
+      "seconds": 65.50575969999772,
+      "rpm": 100,
+      "cpu_percent_of_workers": 63.229339331953085,
+      "wal_bytes": 3267192
+    },
+    {
+      "seconds": 66.5131865000003,
+      "rpm": 100,
+      "cpu_percent_of_workers": 16.285302316712276,
+      "wal_bytes": 3366072
+    },
+    {
+      "seconds": 67.52571220000391,
+      "rpm": 100,
+      "cpu_percent_of_workers": 0.7715853533369244,
+      "wal_bytes": 3366072
+    },
+    {
+      "seconds": 68.53432269999757,
+      "rpm": 100,
+      "cpu_percent_of_workers": 55.76979418750181,
+      "wal_bytes": 3366072
+    },
+    {
+      "seconds": 69.54707220001728,
+      "rpm": 100,
+      "cpu_percent_of_workers": 88.71270733607037,
+      "wal_bytes": 3366072
+    },
+    {
+      "seconds": 70.55168930001673,
+      "rpm": 100,
+      "cpu_percent_of_workers": 97.72587320421589,
+      "wal_bytes": 3370192
+    },
+    {
+      "seconds": 71.55989060000866,
+      "rpm": 100,
+      "cpu_percent_of_workers": 86.7882237413311,
+      "wal_bytes": 3370192
+    },
+    {
+      "seconds": 72.56480170000577,
+      "rpm": 100,
+      "cpu_percent_of_workers": 89.1455307176828,
+      "wal_bytes": 3419632
+    },
+    {
+      "seconds": 73.58073560000048,
+      "rpm": 100,
+      "cpu_percent_of_workers": 67.92805778705309,
+      "wal_bytes": 3588552
+    },
+    {
+      "seconds": 74.58783160001622,
+      "rpm": 100,
+      "cpu_percent_of_workers": 30.771230679944246,
+      "wal_bytes": 3703912
+    },
+    {
+      "seconds": 75.59327949999715,
+      "rpm": 500,
+      "cpu_percent_of_workers": 23.310506691042256,
+      "wal_bytes": 3773952
+    },
+    {
+      "seconds": 76.59594639998977,
+      "rpm": 500,
+      "cpu_percent_of_workers": 15.583440522585343,
+      "wal_bytes": 3827512
+    },
+    {
+      "seconds": 77.6088912000123,
+      "rpm": 500,
+      "cpu_percent_of_workers": 16.45367710688289,
+      "wal_bytes": 3827512
+    },
+    {
+      "seconds": 78.60988289999659,
+      "rpm": 500,
+      "cpu_percent_of_workers": 5.463332013727776,
+      "wal_bytes": 3827512
+    },
+    {
+      "seconds": 79.6117333000002,
+      "rpm": 500,
+      "cpu_percent_of_workers": 99.55536608357343,
+      "wal_bytes": 3827512
+    },
+    {
+      "seconds": 80.6129995000083,
+      "rpm": 500,
+      "cpu_percent_of_workers": 89.99022104804638,
+      "wal_bytes": 3831632
+    },
+    {
+      "seconds": 81.62014640000416,
+      "rpm": 500,
+      "cpu_percent_of_workers": 107.04744263269161,
+      "wal_bytes": 3831632
+    },
+    {
+      "seconds": 82.63602490001358,
+      "rpm": 500,
+      "cpu_percent_of_workers": 76.39118916873127,
+      "wal_bytes": 3831632
+    },
+    {
+      "seconds": 83.64019710000139,
+      "rpm": 500,
+      "cpu_percent_of_workers": 89.98913068339337,
+      "wal_bytes": 3893432
+    },
+    {
+      "seconds": 84.65250769999693,
+      "rpm": 500,
+      "cpu_percent_of_workers": 72.02993494979468,
+      "wal_bytes": 4148872
+    },
+    {
+      "seconds": 85.66506800000207,
+      "rpm": 500,
+      "cpu_percent_of_workers": 69.69749521713307,
+      "wal_bytes": 4152992
+    },
+    {
+      "seconds": 86.67221839999547,
+      "rpm": 500,
+      "cpu_percent_of_workers": 88.43018877873955,
+      "wal_bytes": 4152992
+    },
+    {
+      "seconds": 87.6759357000119,
+      "rpm": 500,
+      "cpu_percent_of_workers": 94.70005481800217,
+      "wal_bytes": 4231272
+    },
+    {
+      "seconds": 88.68039190000854,
+      "rpm": 500,
+      "cpu_percent_of_workers": 86.59328964962107,
+      "wal_bytes": 4268352
+    },
+    {
+      "seconds": 89.68162489999668,
+      "rpm": 500,
+      "cpu_percent_of_workers": 86.35186148914195,
+      "wal_bytes": 4268352
+    },
+    {
+      "seconds": 90.68375270001707,
+      "rpm": 500,
+      "cpu_percent_of_workers": 65.48565961214207,
+      "wal_bytes": 4433152
+    },
+    {
+      "seconds": 91.68688530000509,
+      "rpm": 500,
+      "cpu_percent_of_workers": 79.95785735035543,
+      "wal_bytes": 4494952
+    },
+    {
+      "seconds": 92.6913557999942,
+      "rpm": 500,
+      "cpu_percent_of_workers": 90.9994370178028,
+      "wal_bytes": 4659752
+    },
+    {
+      "seconds": 93.69938440000988,
+      "rpm": 500,
+      "cpu_percent_of_workers": 89.38651806631806,
+      "wal_bytes": 4659752
+    },
+    {
+      "seconds": 94.71676139999181,
+      "rpm": 500,
+      "cpu_percent_of_workers": 81.90998355065341,
+      "wal_bytes": 4886352
+    },
+    {
+      "seconds": 95.7323854000133,
+      "rpm": 500,
+      "cpu_percent_of_workers": 65.12826925312297,
+      "wal_bytes": 4890472
+    },
+    {
+      "seconds": 96.74676139999065,
+      "rpm": 500,
+      "cpu_percent_of_workers": 57.76334416558411,
+      "wal_bytes": 4890472
+    },
+    {
+      "seconds": 97.74950199999148,
+      "rpm": 500,
+      "cpu_percent_of_workers": 66.74416427666104,
+      "wal_bytes": 5141792
+    },
+    {
+      "seconds": 98.76561500001117,
+      "rpm": 500,
+      "cpu_percent_of_workers": 14.864652520314214,
+      "wal_bytes": 5244792
+    },
+    {
+      "seconds": 99.76665850001154,
+      "rpm": 500,
+      "cpu_percent_of_workers": 25.494230104209954,
+      "wal_bytes": 5244792
+    },
+    {
+      "seconds": 100.7677362000104,
+      "rpm": 500,
+      "cpu_percent_of_workers": 6.503407943932908,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 101.76931719999993,
+      "rpm": 500,
+      "cpu_percent_of_workers": 64.48138825917081,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 102.7720176000148,
+      "rpm": 500,
+      "cpu_percent_of_workers": 87.52406667571377,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 103.78129129999434,
+      "rpm": 500,
+      "cpu_percent_of_workers": 74.31086334808992,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 104.78931910000392,
+      "rpm": 500,
+      "cpu_percent_of_workers": 87.06150432144044,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 105.79620070001693,
+      "rpm": 500,
+      "cpu_percent_of_workers": 71.90103914144267,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 106.79814150001039,
+      "rpm": 500,
+      "cpu_percent_of_workers": 69.65647737583102,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 107.80403279999155,
+      "rpm": 500,
+      "cpu_percent_of_workers": 84.3986157698387,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 108.8102782999922,
+      "rpm": 500,
+      "cpu_percent_of_workers": 84.62770765180485,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 109.81480459999875,
+      "rpm": 500,
+      "cpu_percent_of_workers": 62.99611070370942,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 110.81872680000379,
+      "rpm": 500,
+      "cpu_percent_of_workers": 72.89118950947221,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 111.82105020000017,
+      "rpm": 500,
+      "cpu_percent_of_workers": 69.88970160088648,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 112.82771240000147,
+      "rpm": 500,
+      "cpu_percent_of_workers": 75.7971078413739,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 113.82966889999807,
+      "rpm": 500,
+      "cpu_percent_of_workers": 73.81391640613604,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 114.83813930000179,
+      "rpm": 500,
+      "cpu_percent_of_workers": 76.9523494853004,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 115.84108980000019,
+      "rpm": 500,
+      "cpu_percent_of_workers": 87.24259073617202,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 116.84384990000399,
+      "rpm": 500,
+      "cpu_percent_of_workers": 55.056372240104345,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 117.84520129999146,
+      "rpm": 500,
+      "cpu_percent_of_workers": 76.45917307446517,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 118.84954170000856,
+      "rpm": 500,
+      "cpu_percent_of_workers": 81.67674027511327,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 119.85640940000303,
+      "rpm": 500,
+      "cpu_percent_of_workers": 60.7804944651642,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 120.85838940000394,
+      "rpm": 500,
+      "cpu_percent_of_workers": 61.856690419579444,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 121.86083829999552,
+      "rpm": 500,
+      "cpu_percent_of_workers": 72.73853726337504,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 122.87531249999302,
+      "rpm": 500,
+      "cpu_percent_of_workers": 28.49382468284694,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 123.88272550000693,
+      "rpm": 500,
+      "cpu_percent_of_workers": 19.387530238075428,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 124.89106530000572,
+      "rpm": 500,
+      "cpu_percent_of_workers": 15.754031197306375,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 125.89858619999723,
+      "rpm": 500,
+      "cpu_percent_of_workers": 78.57570663530075,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 126.90794609999284,
+      "rpm": 500,
+      "cpu_percent_of_workers": 60.888423775900236,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 127.9115662999975,
+      "rpm": 500,
+      "cpu_percent_of_workers": 34.25100451330129,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 128.91776450001635,
+      "rpm": 500,
+      "cpu_percent_of_workers": 55.90349893186708,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 129.92479540000204,
+      "rpm": 500,
+      "cpu_percent_of_workers": 62.58083375021427,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 130.92736339999828,
+      "rpm": 500,
+      "cpu_percent_of_workers": 76.62614073754041,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 131.93307719999575,
+      "rpm": 500,
+      "cpu_percent_of_workers": 63.180664983245514,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 132.93621859999257,
+      "rpm": 500,
+      "cpu_percent_of_workers": 64.12148543253277,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 133.95192459999816,
+      "rpm": 500,
+      "cpu_percent_of_workers": 58.20048649216189,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 134.9674698000017,
+      "rpm": 500,
+      "cpu_percent_of_workers": 49.74749851917673,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 135.97382730001118,
+      "rpm": 500,
+      "cpu_percent_of_workers": 82.0305739586145,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 136.97810159999062,
+      "rpm": 500,
+      "cpu_percent_of_workers": 64.30845968542194,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 137.98445499999798,
+      "rpm": 500,
+      "cpu_percent_of_workers": 71.16245976096455,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 138.98617670001113,
+      "rpm": 500,
+      "cpu_percent_of_workers": 75.39103259152914,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 139.99458080000477,
+      "rpm": 500,
+      "cpu_percent_of_workers": 84.96304540399395,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 141.00309690000722,
+      "rpm": 500,
+      "cpu_percent_of_workers": 77.46529777740781,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 142.00904569998966,
+      "rpm": 500,
+      "cpu_percent_of_workers": 59.80050873468953,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 143.0106320999912,
+      "rpm": 500,
+      "cpu_percent_of_workers": 61.62099445430263,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 144.01863460001186,
+      "rpm": 500,
+      "cpu_percent_of_workers": 5.425333766422087,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 145.02951019999455,
+      "rpm": 500,
+      "cpu_percent_of_workers": 53.841524450947006,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 146.0358256000036,
+      "rpm": 500,
+      "cpu_percent_of_workers": 85.13939400367258,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 147.05120539999916,
+      "rpm": 500,
+      "cpu_percent_of_workers": 78.48048582446447,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 148.06624640000518,
+      "rpm": 500,
+      "cpu_percent_of_workers": 73.88864095101088,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 149.07900090000476,
+      "rpm": 500,
+      "cpu_percent_of_workers": 86.14089923408889,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 150.09954590001144,
+      "rpm": 500,
+      "cpu_percent_of_workers": 78.8488013752196,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 151.11012940001092,
+      "rpm": 500,
+      "cpu_percent_of_workers": 76.2760655931674,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 152.11763809999684,
+      "rpm": 500,
+      "cpu_percent_of_workers": 77.54275471873527,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 153.13106410001637,
+      "rpm": 500,
+      "cpu_percent_of_workers": 90.45225469338624,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 154.13515570000163,
+      "rpm": 500,
+      "cpu_percent_of_workers": 85.5873109597388,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 155.1404400000174,
+      "rpm": 500,
+      "cpu_percent_of_workers": 81.34100306952998,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 156.16183600001386,
+      "rpm": 500,
+      "cpu_percent_of_workers": 88.72660554800915,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 157.16752260000794,
+      "rpm": 500,
+      "cpu_percent_of_workers": 81.0495204640756,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 158.17193989999942,
+      "rpm": 500,
+      "cpu_percent_of_workers": 92.0413424454671,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 159.1869238000072,
+      "rpm": 500,
+      "cpu_percent_of_workers": 81.5899641357506,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 160.19212690001586,
+      "rpm": 500,
+      "cpu_percent_of_workers": 66.32158880736888,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 161.2038004999922,
+      "rpm": 500,
+      "cpu_percent_of_workers": 73.8771707940987,
+      "wal_bytes": 5248912
+    },
+    {
+      "seconds": 162.2080372000055,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 71.8310898871877,
+      "wal_bytes": 6674432
+    },
+    {
+      "seconds": 163.2171362999943,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 70.45269389377903,
+      "wal_bytes": 6938112
+    },
+    {
+      "seconds": 164.2254566999909,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 84.45356257821209,
+      "wal_bytes": 6938112
+    },
+    {
+      "seconds": 165.2316439000133,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 64.18620047233343,
+      "wal_bytes": 7074072
+    },
+    {
+      "seconds": 166.24840889999177,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 27.66125899356818,
+      "wal_bytes": 7148232
+    },
+    {
+      "seconds": 167.25269329998991,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 16.595564629598456,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 168.2706795000122,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 68.55855871635518,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 169.2756379999919,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 77.2212650256053,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 170.27734669999336,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 70.97247932447375,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 171.27966100000776,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 67.55199774398139,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 172.29517590001342,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 42.312279218907285,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 173.30001860001357,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 70.23280028471706,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 174.30320339999162,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 56.331013655613084,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 175.30726299999515,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 55.24447951078305,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 176.31395979999797,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 82.77897906608942,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 177.32178600001498,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 72.35043767014213,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 178.32779929999379,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 73.25739795708411,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 179.3387655999977,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 82.17179609878569,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 180.34149670001352,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 69.60157779644653,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 181.356892300013,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 43.086655092875176,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 182.36982250001165,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 39.59223119887192,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 183.37325890001375,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 42.56207302549907,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 184.37765010001021,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 66.11592176458129,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 185.38201649999246,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 64.82113167845671,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 186.38461559999269,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 93.2472244721867,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 187.38708370001405,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 57.67016426634238,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 188.389302399999,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 45.99170819771386,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 189.40266759999213,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 37.262397274864576,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 190.40695910001523,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 25.671082548649455,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 191.41299340000842,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 93.96424157768774,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 192.41650809999555,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 91.08610965157933,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 193.42336280000745,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 77.59312242280507,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 194.43535690000863,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 74.3684342295862,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 195.45302479999373,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 67.55641992933711,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 196.46300350001547,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 65.49230526535761,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 197.46481949998997,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 87.08144343427756,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 198.47835320001468,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 71.6860722028569,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 199.48261700000148,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 62.493954942408024,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 200.49847590000718,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 66.90766798383011,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 201.50718099999358,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 79.51613740667587,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 202.5218784000026,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 94.44523395100924,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 203.5247709999967,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 95.03759425541904,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 204.5364242999931,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 87.00691564357756,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 205.55226389999734,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 101.26065506099822,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 206.56232830000226,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 76.315265970128,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 207.56635929999175,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 77.55197133768684,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 208.58292650000658,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 86.33016751414574,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 209.58583379999618,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 73.48427583230354,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 210.5895651000028,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 34.24721337251639,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 211.59764500000165,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 14.724775288166118,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 212.60185450001154,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 22.561278298778106,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 213.60812240000814,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 20.4447708872917,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 214.60923800000455,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 72.31515854272267,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 215.6142988000065,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 92.24151746158327,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 216.63049030001275,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 69.9609768430096,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 217.64271350001218,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 71.77888236511595,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 218.6464546000061,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 78.6121540708825,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 219.64954700000817,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 75.28801268275805,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 220.6541499000159,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 87.87676205127406,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 221.65544679999584,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 64.23960432510646,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 222.66597820000607,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 67.0027010864268,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 223.66888640000252,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 84.13033216828646,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 224.676998800016,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 83.43770330789299,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 225.68557729999884,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 88.56317745042863,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 226.69385239999974,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 73.6096230085754,
+      "wal_bytes": 7222392
+    },
+    {
+      "seconds": 227.70160249999026,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 79.07466345153415,
+      "wal_bytes": 7300672
+    },
+    {
+      "seconds": 228.71398960001534,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 94.91799134700494,
+      "wal_bytes": 7374832
+    },
+    {
+      "seconds": 229.72492380000767,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 75.99200488740928,
+      "wal_bytes": 7469592
+    },
+    {
+      "seconds": 230.73233669999172,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 78.584130367916,
+      "wal_bytes": 9002232
+    },
+    {
+      "seconds": 231.73884850001195,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 78.65448439360088,
+      "wal_bytes": 9208232
+    },
+    {
+      "seconds": 232.75091599998996,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 76.93615626924664,
+      "wal_bytes": 9323592
+    },
+    {
+      "seconds": 233.75543029999244,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 81.40335417139522,
+      "wal_bytes": 9595512
+    },
+    {
+      "seconds": 234.76357370000915,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 16.01541341545833,
+      "wal_bytes": 9595512
+    },
+    {
+      "seconds": 235.76906960000633,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 5.438858577161086,
+      "wal_bytes": 9706752
+    },
+    {
+      "seconds": 236.7753292999987,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 5.693526896396734,
+      "wal_bytes": 9706752
+    },
+    {
+      "seconds": 237.78900779999094,
+      "rpm": 1000,
+      "cpu_percent_of_workers": 16.44176794397265,
+      "wal_bytes": 9706752
+    },
+    {
+      "seconds": 238.79368319999776,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 16.589105960545634,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 239.8001898000075,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 16.558924369204664,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 240.80617190001067,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 23.298128266821283,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 241.8105603000149,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 19.445913552881976,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 242.83172730001388,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 39.78291503744349,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 243.8356960999954,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 41.761340924244884,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 244.84920709999278,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 48.56262043542425,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 245.8518582000106,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 54.54290131335572,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 246.85466529999394,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 60.50723347924247,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 247.85845580001478,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 40.99045899764846,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 248.87401850000606,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 54.61873501308817,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 249.87499139999272,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 50.73189294203326,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 250.87671929999487,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 63.432062405899025,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 251.8851200999925,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 65.33653748273741,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 252.88664489999064,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 60.06466340135667,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 253.89921510001295,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 78.44106347548379,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 254.90464890000294,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 68.11943594298839,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 255.90864780000993,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 73.40437989140577,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 256.92533870000625,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 87.60037096852386,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 257.9278720000002,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 65.97868951957214,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 258.9340283999918,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 55.388174907133866,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 259.93544840000686,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 54.34990646533407,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 260.94975830000476,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 58.02385115908725,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 261.9524678000016,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 63.11025277031737,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 262.9662202000036,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 57.28510893444339,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 263.96861660000286,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 56.37531885260941,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 264.97577610000735,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 8.274094950498084,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 265.9818326999957,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 29.508777140712766,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 266.9860389000096,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 19.190115867704456,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 267.99918770001386,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 37.27035620681522,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 269.0281675000151,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 22.018167897924158,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 270.0516118000087,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 31.8064044457894,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 271.06102490000194,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 31.47456015138469,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 272.0653387999919,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 23.85542342247116,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 273.08112380001694,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 44.09561734575875,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 274.08245600000373,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 78.54120074673597,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 275.08851430000504,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 67.30060607148204,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 276.10079450000194,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 34.987019075128934,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 277.1050449000031,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 64.56930462753473,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 278.10588730001473,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 66.8707514115681,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 279.1089906000125,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 59.19131160283628,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 280.12500070000533,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 61.771449582152826,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 281.1307846000127,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 21.23136656543233,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 282.1360607999959,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 13.72964299121375,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 283.1441790999961,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 11.882699348542946,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 284.14735949999886,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 30.631745463310985,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 285.1635249000101,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 32.29051097354556,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 286.16635049998877,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 60.24643434307146,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 287.1714408000116,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 57.00151186949448,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 288.1845464000071,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 47.81090934668271,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 289.2010677999933,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 37.91525359642079,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 290.2039952999912,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 37.390539196580704,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 291.21981380000943,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 58.19404089635446,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 292.22167220001575,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 68.62247199760644,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 293.23565190000227,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 61.124662226956374,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 294.2546779999975,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 49.83312007438965,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 295.26935159999994,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 56.46314900331472,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 296.27386270000716,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 59.88609782367518,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 297.2769673000148,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 55.81629606015821,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 298.29109569999855,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 70.36009115592289,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 299.3101389000076,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 62.098692184432245,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 300.32370559999254,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 59.607983044000775,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 301.3328815000132,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 52.12586494147449,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 302.3424936000083,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 74.28595596304875,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 303.34403090001433,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 73.06476087599876,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 304.3592539000092,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 41.29839782347815,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 305.3750002000015,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 37.17504722089791,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 306.3916495000012,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 52.767294811838475,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 307.3926591000054,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 43.18556651852899,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 308.40088309999555,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 4.649264449215446,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 309.4186675999954,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 67.03694806383648,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 310.4287489000126,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 75.79835405199259,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 311.4387535999995,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 77.0932881147422,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 312.45494709999184,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 77.1363098339591,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 313.4580016999971,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 88.01240730019691,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 314.46050190000096,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 88.06107968822437,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 315.47437589999754,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 68.06606803892761,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 316.4828908999916,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 80.56399756124321,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 317.49547709999024,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 74.32494800617371,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 318.51280160000897,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 81.9142105904252,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 319.51751120001427,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 72.056476152862,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 320.53092910000123,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 62.70035951356707,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 321.5316013999982,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 64.53994312976405,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 322.5477528999909,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 74.06416923776345,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 323.56012760000885,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 77.42727733642015,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 324.5631119000027,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 81.52753072389615,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 325.57675030000973,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 84.0104814492117,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 326.59019499999704,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 85.82527163816275,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 327.60632220000844,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 54.588392082583624,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 328.6087469999911,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 16.626351090829406,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 329.62326769999345,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 30.03265482895545,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 330.6266611000174,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 21.02241254476764,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 331.6302358999965,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 81.73904924845452,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 332.63572789999307,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 88.05805184622719,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 333.6486082999909,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 90.75808292226006,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 334.65562450001016,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 76.54626939651772,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 335.65955460001715,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 81.45072384298926,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 336.6758785000129,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 86.35083428327532,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 337.6818209000048,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 93.71394757203947,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 338.6866499000171,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 83.45118091301539,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 339.7011102999968,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 74.7010430387569,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 340.7143486000132,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 77.61829900435241,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 341.7179516000033,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 72.91437284868084,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 342.7344180000073,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 94.79326288236213,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 343.73707649999415,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 81.8137481516136,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 344.7402064999915,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 93.45747809381616,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 345.744543400011,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 93.60446346722546,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 346.74575060000643,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 76.9903905342341,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 347.7483893999888,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 79.73750533898327,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 348.7597488000174,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 86.51721633034308,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 349.7625096999982,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 48.04443744690931,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 350.76626390000456,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 16.085445354281834,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 351.7688479000062,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 22.597857137120137,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 352.7700453000143,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 10.664313883802535,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 353.7752703000151,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 88.85863032315783,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 354.7770521999919,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 95.14296475331557,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 355.79081060001045,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 97.87218532362692,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 356.80178599999635,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 81.91346693614325,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 357.8073413000093,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 88.57046449743225,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 358.80890510001336,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 86.84336101835201,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 359.8109595999995,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 62.89162249578894,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 360.8267131000175,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 66.4018550420639,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 361.82981180000934,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 80.47978396076545,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 362.83880040000076,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 62.45941067507489,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 363.8439100999967,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 92.49612256291438,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 364.8465209999995,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 71.9475687591944,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 365.86238229999435,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 88.95366260511145,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 366.8683023999911,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 70.1575767965032,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 367.87438690001727,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 67.29885345770731,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 368.87695090001216,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 85.97747043291596,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 369.8833832000091,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 81.24822040546633,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 370.88573340000585,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 75.60356649826326,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 371.88754970001173,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 83.44219394265092,
+      "wal_bytes": 9731472
+    },
+    {
+      "seconds": 372.89057099999627,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 40.76226164618528,
+      "wal_bytes": 9797392
+    },
+    {
+      "seconds": 373.9029751000053,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 17.234142637817676,
+      "wal_bytes": 9916872
+    },
+    {
+      "seconds": 374.9040825999982,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 26.27298600152212,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 375.9052487000008,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 30.17314842487686,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 376.90840949999983,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 86.96470529292843,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 377.9234392000071,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 91.59214750005081,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 378.93044570001075,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 96.45957267040167,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 379.94171010001446,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 77.25477135328141,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 380.9470108000096,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 72.79123881410574,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 381.9531316999928,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 84.12052335666473,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 382.9566327999928,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 72.92177690022838,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 383.9660002000164,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 96.74995447417335,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 384.9699326000118,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 58.364238468913776,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 386.015207199991,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 55.806706997851094,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 387.02449919999344,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 44.121275111554866,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 388.04286119999597,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 63.67455777006524,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 389.06106680000084,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 63.428578013147884,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 390.077397200017,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 63.801840424107205,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 391.08266889999504,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 62.43129759649828,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 392.0898596000043,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 48.350244562643674,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 393.0921481999976,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 55.6019161218009,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 394.10879790000035,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 33.812039682800474,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 395.1117882000108,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 22.848343265561486,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 396.126428699994,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 11.549657243322981,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 397.1313139999984,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 1.036602552213787,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 398.1404193000053,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 39.22616731183732,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 399.14677190000657,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 40.109781932577725,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 400.1526574000018,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 39.6106216862556,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 401.1676942000049,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 31.556737647246642,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 402.1813264999946,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 17.470174671341244,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 403.1836717000115,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 17.66690091700488,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 404.19608779999544,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 14.14726283678569,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 405.19786650000606,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 37.95332575241452,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 406.20300509998924,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 66.84401534387801,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 407.21242739999434,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 20.896853576440158,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 408.22016540000914,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 57.88541598359574,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 409.2348285999906,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 55.69376781152627,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 410.2430541999929,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 35.127720092194345,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 411.2543117000023,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 42.49041416217087,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 412.2574050000112,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 56.59576565094081,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 413.264579300012,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 61.53767691115558,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 414.27860280001187,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 57.26979371451721,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 415.2930963000108,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 80.60261927101476,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 416.29447930000606,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 29.126384876520568,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 417.3102321999904,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 13.331654447528654,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 418.3559804999968,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 31.875101621613883,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 419.3567655000079,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 13.531044796351443,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 420.36973999999464,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 70.18315860955101,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 421.3740544000175,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 57.564145250416296,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 422.37806240000646,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 33.97839791486529,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 423.38511060000747,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 51.71880882492135,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 424.3956940000062,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 43.03413585992834,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 425.4062106999918,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 54.63376640298968,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 426.40912980001303,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 40.247098028622936,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 427.419066500006,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 54.66514221506876,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 428.4232544999977,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 53.16277098223432,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 429.4300188999914,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 64.92540194482685,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 430.43563829999766,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 57.489443819043764,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 431.44133140001213,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 64.99456278699033,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 432.4589129000087,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 52.463037768321556,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 433.46313710001414,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 54.19813955194478,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 434.46988439999404,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 73.98000140467542,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 435.4843266000098,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 84.97075206978488,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 436.49751529999776,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 73.7666965040394,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 437.5044682000007,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 64.91324801104626,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 438.5156094999984,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 64.6443611130143,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 439.5233511000115,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 68.99710203398945,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 440.5258862999908,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 26.235570914493454,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 441.5338103999966,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 44.18115411641138,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 442.5393769000075,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 69.92327210506497,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 443.5547496000072,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 76.17276887592274,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 444.5704642999917,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 81.01848547423816,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 445.5725317999895,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 84.20091460923126,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 446.57467110001016,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 83.41529964774152,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 447.5812356999959,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 93.65601903213218,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 448.5831298000121,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 53.02456616836068,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 449.58856579998974,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 64.49316515565623,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 450.60112929999013,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 61.21015291055068,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 451.60509299999103,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 49.5432089161082,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 452.6080435999902,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 63.614382735686405,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 453.6139019000111,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 79.48228559132437,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 454.62039170000935,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 82.01979129195159,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 455.6242801999906,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 78.60061152356374,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 456.6260903000075,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 63.946749986769355,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 457.630252700008,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 74.42977683021833,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 458.63185589999193,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 32.239979531998515,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 459.6328078999941,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 16.91098407645629,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 460.6346743000031,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 22.094180088749706,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 461.6378323000099,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 45.948644181362525,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 462.648909999989,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 63.875737081997094,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 463.667414800002,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 54.7166460736891,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 464.67900540001574,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 53.031170250697336,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 465.6888501000067,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 80.97367182703174,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 466.7002213000087,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 70.29441811261505,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 467.7071678999928,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 76.29294012997468,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 468.72071230001166,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 76.8240477002127,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 469.73231980000855,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 62.81256976333357,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 470.7433100999915,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 86.03363125060007,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 471.7465893999906,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 97.07748712987362,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 472.753644899989,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 83.78386295505575,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 473.76706340000965,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 92.76564091217251,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 474.785168900009,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 85.68815641737301,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 475.80045670000254,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 80.79605605476866,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 476.8074029000127,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 78.36193234475277,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 477.80838040000526,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 62.699128269248284,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 478.81753309999476,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 82.83558078065867,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 479.8288724000158,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 77.24904984743782,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 480.8326093000069,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 86.13645003397195,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 481.83627910001087,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 80.6934544937103,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 482.84012300000177,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 42.285375910588854,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 483.84111470001517,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 24.194756060090974,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 484.84703720000107,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 5.95431887985137,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 485.85260939999716,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 63.7075090184959,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 486.85916610001004,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 72.44168824839541,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 487.8684009000135,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 70.18518716664333,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 488.8748748000071,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 74.77632223463195,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 489.8885253999906,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 49.58357117085884,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 490.8895387999946,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 47.86815707609368,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 491.89541550001013,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 57.733633422238995,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 492.9000262999907,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 81.39553480304394,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 493.90969450000557,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 84.85667205530744,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 494.92386860001716,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 83.70932893313227,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 495.927451800002,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 96.26962999658711,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 496.9286844000162,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 95.19516244142378,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 497.93301999999676,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 78.56562089557326,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 498.9339823999908,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 85.85487327047763,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 499.93975700001465,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 85.961937526839,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 500.9485430000059,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 83.3819891771539,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 501.9652264000033,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 58.144534801574835,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 502.9667049999989,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 49.66614696864366,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 503.9794038000109,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 57.859010003078396,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 504.98106520000147,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 27.298396444405153,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 505.98475880001206,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 15.048583219527616,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 506.98773110000184,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 66.2094556356908,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 507.9993897000095,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 66.15579933074979,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 509.01484429999255,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 68.4730267617676,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 510.01705200001015,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 78.47258939634138,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 511.02453210001113,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 92.53698079652034,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 512.025349500007,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 89.51016772260681,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 513.0409117999952,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 85.38988696311868,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 514.0426974000002,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 87.08408598896034,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 515.0467053000175,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 71.06932790612125,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 516.0512731999916,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 69.21508242677795,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 517.0610985000094,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 68.5968487144358,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 518.0756899999978,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 67.50459010755822,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 519.0777379999927,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 79.00486470416106,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 520.0935313999944,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 72.80844050887579,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 521.1080411000003,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 61.09272948923782,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 522.1142380000092,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 90.3256774751132,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 523.1254971000017,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 93.22124600316222,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 524.141875500005,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 90.44572703732628,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 525.1432214000088,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 91.02332503981651,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 526.1460158000118,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 36.0970470782016,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 527.1474359999993,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 17.163124930189053,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 528.1519908999908,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 23.071992713917055,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 529.1568428000028,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 22.80601416625973,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 530.1627040000167,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 83.36554453587452,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 531.1664435999992,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 93.1412722333187,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 532.1809008000128,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 92.92736384745716,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 533.1827412999992,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 76.94172209486193,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 534.1838270000007,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 75.6990635266105,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 535.1876591999899,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 75.23252724325032,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 536.1922828000097,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 69.21124488676834,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 537.1958460000169,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 65.13250319747162,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 538.2023306000046,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 68.82453376254031,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 539.215446999995,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 80.96922525464767,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 540.2248416999937,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 89.00755076296592,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 541.2262623000133,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 68.39242505296068,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 542.2413849000004,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 77.47422166971188,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 543.2497292000044,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 45.97057440249808,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 544.2661490000028,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 43.811867891662466,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 545.2767825000046,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 49.98927240512056,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 546.2884117999929,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 42.474797834046676,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 547.2940124000015,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 64.22364240114786,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 548.3108707999927,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 13.317160645753765,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 549.3128396999964,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 19.232965547395843,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 550.3146695999894,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 7.798230018942716,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 551.3168287000153,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 74.31870514845636,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 552.3234571999928,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 89.25214217758199,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 553.3303064999927,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 83.5423765337503,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 554.3384662000171,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 81.109008157491,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 555.3396895999904,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 92.07485562409326,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 556.340926600009,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 88.43227593968523,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 557.3483024000016,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 92.28805178830393,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 558.3620184999891,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 78.09550096683132,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 559.363476700004,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 92.05326792334306,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 560.3655062000034,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 88.6222245286984,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 561.3666316000163,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 85.32064680965289,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 562.3679848000174,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 84.78110753851247,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 563.3700512000069,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 85.24052564537517,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 564.3715622000163,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 94.12860501026987,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 565.3817658000044,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 85.32727132202767,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 566.3829624000064,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 79.59225990164221,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 567.3853137000115,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 91.97124800409867,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 568.3861032999994,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 72.07850348118927,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 569.3869459000125,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 28.101321825860577,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 570.3902679000166,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 24.657670551659173,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 571.3912456000107,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 21.853633702457834,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 572.392623599997,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 95.44139842095119,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 573.3935856999888,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 95.74122070568333,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 574.3948324999947,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 92.07270375241811,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 575.396820199996,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 103.70012526088036,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 576.3975598000106,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 77.54681304260508,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 577.4001285000122,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 82.60032454620804,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 578.4014253999921,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 68.14079487116555,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 579.4029955000151,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 68.9022332686306,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 580.4057253999927,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 78.4317225756336,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 581.4085472000006,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 62.843501540187596,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 582.4103929999983,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 85.7791688104086,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 583.4115137000044,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 97.54692915589601,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 584.4129557000124,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 88.4141734278803,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 585.415341200016,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 98.20323617974128,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 586.4164888999949,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 88.70028202152871,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 587.4179819000128,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 95.17041057530325,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 588.4189937000046,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 82.46864156247425,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 589.4201763000165,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 88.17697191197497,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 590.4211697000137,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 22.893923842784393,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 591.4223284999898,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 20.809219610146222,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 592.4247234000068,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 18.705202909235574,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 593.4257542999985,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 75.44305908434592,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 594.4266601999989,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 87.42080549227293,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 595.4281947000127,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 96.72657307228536,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 596.4308036000002,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 87.79179332482249,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 597.4320234000043,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 82.97170777718509,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 598.4339245000156,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 83.69505399856344,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 599.434831599996,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 91.58359119289106,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 600.4360295000079,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 84.27404811675784,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 601.4368569999933,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 92.11127791886126,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 602.4378234999895,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 90.2773302939528,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 603.4390906000044,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 77.7660459753149,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 604.4402359999949,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 88.9606045244236,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 605.4410612999927,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 71.29532663375167,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 606.4430302999972,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 79.53090365035736,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 607.4456121000112,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 82.85899132171113,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 608.4476802000136,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 82.12183050879749,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 609.4501285000006,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 93.26125181173424,
+      "wal_bytes": 9920992
+    },
+    {
+      "seconds": 610.4515795999905,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 86.59309476106371,
+      "wal_bytes": 9953952
+    },
+    {
+      "seconds": 611.4542370999989,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 49.34802429169922,
+      "wal_bytes": 10275312
+    },
+    {
+      "seconds": 612.4560582000122,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 17.676143308518558,
+      "wal_bytes": 10403032
+    },
+    {
+      "seconds": 613.4574110000103,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 21.585382627754857,
+      "wal_bytes": 10403032
+    },
+    {
+      "seconds": 614.4583383999998,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 22.3750826818902,
+      "wal_bytes": 10403032
+    },
+    {
+      "seconds": 615.4598246999958,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 98.29140947848222,
+      "wal_bytes": 10407152
+    },
+    {
+      "seconds": 616.4620678999927,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 89.90249738481327,
+      "wal_bytes": 10407152
+    },
+    {
+      "seconds": 617.4643488000147,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 95.35542048598094,
+      "wal_bytes": 10407152
+    },
+    {
+      "seconds": 618.4669082000037,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 82.86084262696136,
+      "wal_bytes": 10407152
+    },
+    {
+      "seconds": 619.4685814999975,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 89.1737023111375,
+      "wal_bytes": 10514272
+    },
+    {
+      "seconds": 620.4695984999998,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 97.03673031171444,
+      "wal_bytes": 10839752
+    },
+    {
+      "seconds": 621.4712936000142,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 81.89243413372634,
+      "wal_bytes": 10839752
+    },
+    {
+      "seconds": 622.4721166999952,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 79.3617606696291,
+      "wal_bytes": 10905672
+    },
+    {
+      "seconds": 623.4729555000085,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 81.44210302956245,
+      "wal_bytes": 11012792
+    },
+    {
+      "seconds": 624.4748630000104,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 89.67269932587138,
+      "wal_bytes": 11148752
+    },
+    {
+      "seconds": 625.476017500012,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 80.63607232104495,
+      "wal_bytes": 11152872
+    },
+    {
+      "seconds": 626.4781195000105,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 85.75723828524805,
+      "wal_bytes": 11222912
+    },
+    {
+      "seconds": 627.480212399998,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 100.05101988839546,
+      "wal_bytes": 11317672
+    },
+    {
+      "seconds": 628.4819642000075,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 99.30520380968795,
+      "wal_bytes": 11531912
+    },
+    {
+      "seconds": 629.4839217000117,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 84.72997440807285,
+      "wal_bytes": 11531912
+    },
+    {
+      "seconds": 630.4864030000172,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 88.58228411128466,
+      "wal_bytes": 13233472
+    },
+    {
+      "seconds": 631.4882694999978,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 96.69451968088389,
+      "wal_bytes": 13233472
+    },
+    {
+      "seconds": 632.4900609000179,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 95.14206250732052,
+      "wal_bytes": 13509512
+    },
+    {
+      "seconds": 633.4910305000085,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 34.341702285785146,
+      "wal_bytes": 13637232
+    },
+    {
+      "seconds": 634.4917401999992,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 15.613918801971552,
+      "wal_bytes": 13752592
+    },
+    {
+      "seconds": 635.4933470000105,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 23.659899939175645,
+      "wal_bytes": 13756712
+    },
+    {
+      "seconds": 636.4946149000025,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 40.05338298270555,
+      "wal_bytes": 13756712
+    },
+    {
+      "seconds": 637.5049665000115,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 83.25278381563672,
+      "wal_bytes": 13756712
+    },
+    {
+      "seconds": 638.5093871999998,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 88.92978476818607,
+      "wal_bytes": 13756712
+    },
+    {
+      "seconds": 639.5237677000114,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 88.57006813416814,
+      "wal_bytes": 13756712
+    },
+    {
+      "seconds": 640.5256073999917,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 93.5778448406866,
+      "wal_bytes": 13756712
+    },
+    {
+      "seconds": 641.5269963000028,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 95.18030407461623,
+      "wal_bytes": 13756712
+    },
+    {
+      "seconds": 642.5278377000068,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 85.60505523951308,
+      "wal_bytes": 13756712
+    },
+    {
+      "seconds": 643.5325373999949,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 92.01547155608739,
+      "wal_bytes": 13756712
+    },
+    {
+      "seconds": 644.5335741000017,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 90.27099938765365,
+      "wal_bytes": 13756712
+    },
+    {
+      "seconds": 645.535534900002,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 86.80895167420361,
+      "wal_bytes": 13756712
+    },
+    {
+      "seconds": 646.5435929000087,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 96.35895619698451,
+      "wal_bytes": 13756712
+    },
+    {
+      "seconds": 647.5481495000131,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 76.99292404196893,
+      "wal_bytes": 13756712
+    },
+    {
+      "seconds": 648.549772600003,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 92.55810227845481,
+      "wal_bytes": 13756712
+    },
+    {
+      "seconds": 649.5513690999942,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 90.48054780622924,
+      "wal_bytes": 13756712
+    },
+    {
+      "seconds": 650.5523082000145,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 84.55601011584766,
+      "wal_bytes": 13756712
+    },
+    {
+      "seconds": 651.5543773999962,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 89.65822919379889,
+      "wal_bytes": 13756712
+    },
+    {
+      "seconds": 652.5589458000031,
+      "rpm": 2000,
+      "cpu_percent_of_workers": 80.88050549811832,
+      "wal_bytes": 13756712
+    }
+  ],
+  "slow_acquire_warnings": 5752,
+  "mock_upstream_errors": 0,
+  "smoke_passed": false
+}

@@ -3,6 +3,27 @@ title: Troubleshooting
 description: Resolve common errors for authentication, routing, billing, and streaming.
 ---
 
+## Check local gateway capacity
+
+Run these commands from the repository root on Windows or Linux. Install Python 3.11 or later, Rust, Bun, and the native build prerequisites.
+
+```sh
+python scripts/gateway_benchmark.py --profile smoke
+python scripts/gateway_benchmark.py --profile qualification
+```
+
+The runner builds the release executable and creates an isolated fixture. It uses a loopback mock upstream and one test API key.
+
+Read `report.json` and the logs in the printed `local-test/gateway-benchmark-*` directory.
+
+The smoke profile checks the harness with a small fixture. It never claims qualification.
+
+The qualification profile uses 500,000 history rows and runs gateway load for at least ten minutes after upstream calibration.
+
+A failed gate produces a nonzero exit code. Review `failures` before interpreting latency or throughput.
+
+The report applies only to the measured host. It does not establish production capacity.
+
 ## Diagnose with logs first
 
 Open **Logs** in the dashboard before you change configuration. Each failed request row shows the error code, the HTTP status, and every failed upstream attempt. Enable [request capture](/en/docs/request-logs) to inspect the exact upstream payloads.

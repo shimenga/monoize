@@ -3,6 +3,27 @@ title: 疑難排解
 description: 解決認證、路由、計費和串流傳輸的常見錯誤。
 ---
 
+## 檢查本機閘道容量
+
+在儲存庫根目錄執行以下命令。支援 Windows 與 Linux。請先安裝 Python 3.11 或更新版本、Rust、Bun 及原生建置相依套件。
+
+```sh
+python scripts/gateway_benchmark.py --profile smoke
+python scripts/gateway_benchmark.py --profile qualification
+```
+
+執行工具會建置 release 執行檔並建立隔離測試資料。測試使用回送位址上的模擬上游與一把測試 API 金鑰。
+
+在命令輸出的 `local-test/gateway-benchmark-*` 目錄中，查看 `report.json` 與日誌。
+
+smoke 模式使用少量測試資料檢查工具本身，不作為容量驗收證明。
+
+qualification 模式使用 500,000 筆歷史紀錄。完成模擬上游校準後，閘道負載測試至少持續十分鐘。
+
+任何驗收項目失敗都會回傳非零結束代碼。分析延遲或吞吐量前，請先檢查 `failures`。
+
+報告僅適用於接受測量的主機，不能據此認定正式環境的容量。
+
 ## 先看日誌
 
 修改設定之前，先開啟儀表板中的**日誌**。每個失敗請求的行都顯示錯誤碼、HTTP 狀態和每次失敗的上游嘗試。開啟[請求擷取](/zh-TW/docs/request-logs)可以檢查上游的完整封包。

@@ -3,6 +3,27 @@ title: 故障排查
 description: 解决认证、路由、计费和流式传输的常见错误。
 ---
 
+## 检查本地网关容量
+
+在仓库根目录运行以下命令。支持 Windows 和 Linux。先安装 Python 3.11 或更新版本、Rust、Bun 及原生构建依赖。
+
+```sh
+python scripts/gateway_benchmark.py --profile smoke
+python scripts/gateway_benchmark.py --profile qualification
+```
+
+运行器会构建 release 可执行文件并创建隔离测试数据。测试使用回环地址上的模拟上游和一个测试 API 密钥。
+
+在命令输出的 `local-test/gateway-benchmark-*` 目录中查看 `report.json` 和日志。
+
+smoke 模式使用少量测试数据检查工具本身，不作为容量资格证明。
+
+qualification 模式使用 500,000 条历史记录。完成模拟上游校准后，网关负载测试至少持续十分钟。
+
+任何验收项失败都会返回非零退出码。分析延迟或吞吐量前，先检查 `failures`。
+
+报告仅适用于接受测量的主机，不能据此认定生产环境容量。
+
 ## 先看日志
 
 修改配置之前，先打开仪表盘中的**日志**。每个失败请求的行都显示错误码、HTTP 状态和每次失败的上游尝试。开启[请求捕获](/zh/docs/request-logs)可以检查上游的完整报文。
